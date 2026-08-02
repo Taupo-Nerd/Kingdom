@@ -3,19 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Vote | Kingdom Network</title>
 
-<link://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap
+https://fonts.googleapis.com
+https://fonts.gstatic.com
+https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap
 
 <style>
 
 :root{
-    --orange:#ff8b38;
-    --orange-bright:#ffae52;
-    --dark:#080b12;
-    --card:#131823;
+    --bg:#06070d;
+    --card:rgba(255,255,255,.05);
+    --border:rgba(255,255,255,.08);
+
+    --orange:#ff7a1c;
+    --orange2:#ffb548;
+
     --text:#ffffff;
-    --muted:#9ca6ba;
+    --muted:#a8b2c5;
 }
 
 *{
@@ -30,16 +36,15 @@ html{
 
 body{
     font-family:'Inter',sans-serif;
-    color:var(--text);
     background:
-        radial-gradient(circle at top left,rgba(255,139,56,.18),transparent 35%),
-        radial-gradient(circle at top right,rgba(255,174,82,.12),transparent 35%),
-        linear-gradient(180deg,#05070d,#0c1018);
-    min-height:100vh;
+        radial-gradient(circle at top left, rgba(255,122,28,.15), transparent 30%),
+        radial-gradient(circle at top right, rgba(255,181,72,.12), transparent 30%),
+        linear-gradient(180deg,#05060a,#0b0f19);
+    color:white;
     overflow-x:hidden;
 }
 
-/* ---------------- NAV ---------------- */
+/* ================= NAVBAR ================= */
 
 nav{
     position:fixed;
@@ -47,51 +52,53 @@ nav{
     left:50%;
     transform:translateX(-50%);
     width:min(1200px,95%);
-    z-index:100;
+    z-index:1000;
 }
 
-.nav-wrapper{
+.navbar{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 
-    background:rgba(15,17,26,.75);
+    background:rgba(10,12,18,.75);
     backdrop-filter:blur(14px);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid var(--border);
 
-    padding:14px 22px;
-    border-radius:18px;
+    border-radius:20px;
+
+    padding:14px 24px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
+
     text-decoration:none;
     color:white;
-    font-weight:900;
-    font-size:1.1rem;
+    font-weight:800;
 }
 
 .logo img{
-    width:48px;
     height:48px;
-    object-fit:contain;
 }
 
 .nav-links{
     display:flex;
-    gap:14px;
+    gap:10px;
+    align-items:center;
 }
 
 .nav-links a{
-    color:var(--muted);
     text-decoration:none;
-    padding:10px 16px;
+    color:var(--muted);
+
+    padding:12px 18px;
+
     border-radius:12px;
-    transition:.25s ease;
-    font-weight:600;
+
+    transition:.25s;
 }
 
 .nav-links a:hover{
@@ -99,18 +106,13 @@ nav{
     background:rgba(255,255,255,.05);
 }
 
-.store-btn{
-    background:linear-gradient(
-        135deg,
-        var(--orange),
-        var(--orange-bright)
-    );
-
+.store{
+    background:linear-gradient(135deg,var(--orange),var(--orange2));
     color:#111 !important;
-    font-weight:800 !important;
+    font-weight:800;
 }
 
-/* ---------------- HERO ---------------- */
+/* ================= HERO ================= */
 
 .hero{
     min-height:100vh;
@@ -120,40 +122,68 @@ nav{
     justify-content:center;
 
     text-align:center;
-    padding:140px 20px;
+
+    padding:180px 20px 120px;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+    width:700px;
+    height:700px;
+
+    background:
+        radial-gradient(circle,
+        rgba(255,122,28,.15),
+        transparent 70%);
+
+    pointer-events:none;
 }
 
 .hero-content{
-    max-width:1000px;
+    max-width:950px;
+    position:relative;
 }
 
-.hero-badge{
+.hero-logo{
+    width:150px;
+    margin-bottom:35px;
+    filter:drop-shadow(0 0 40px rgba(255,122,28,.2));
+}
+
+.badge{
     display:inline-block;
 
-    padding:8px 18px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    background:rgba(255,255,255,.04);
+    padding:10px 18px;
 
     border-radius:999px;
 
-    margin-bottom:25px;
+    border:1px solid var(--border);
 
-    color:#d7def0;
+    background:rgba(255,255,255,.04);
+
+    color:#d2d7e2;
+
+    font-size:.85rem;
+    margin-bottom:25px;
 }
 
 .hero h1{
-    font-size:clamp(4rem,10vw,7rem);
+    font-size:clamp(4rem,9vw,7rem);
     line-height:.95;
     font-weight:900;
+    letter-spacing:-3px;
+
+    margin-bottom:25px;
 }
 
-.hero h1 span{
+.hero span{
     background:linear-gradient(
         135deg,
         var(--orange),
-        var(--orange-bright)
+        var(--orange2)
     );
 
     -webkit-background-clip:text;
@@ -161,106 +191,114 @@ nav{
 }
 
 .hero p{
-    margin:30px auto;
     max-width:700px;
-    font-size:1.2rem;
+
+    margin:auto;
+
     color:var(--muted);
-    line-height:1.75;
+
+    font-size:1.2rem;
+
+    line-height:1.8;
 }
 
 .hero-buttons{
+    margin-top:40px;
+
     display:flex;
     justify-content:center;
     gap:15px;
     flex-wrap:wrap;
 }
 
-.button{
+.btn{
     text-decoration:none;
-    color:white;
 
-    padding:16px 28px;
+    padding:16px 24px;
+
     border-radius:14px;
 
     font-weight:800;
 
-    transition:.25s ease;
+    transition:.25s;
 }
 
-.primary{
+.btn-primary{
     background:linear-gradient(
-      135deg,
-      var(--orange),
-      var(--orange-bright)
+        135deg,
+        var(--orange),
+        var(--orange2)
     );
 
     color:#111;
 }
 
-.primary:hover{
+.btn-primary:hover{
     transform:translateY(-3px);
 }
 
-.secondary{
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.03);
+.btn-secondary{
+    color:white;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.04);
 }
 
-.secondary:hover{
-    background:rgba(255,255,255,.06);
+.btn-secondary:hover{
+    background:rgba(255,255,255,.08);
 }
 
-/* ---------------- IP ---------------- */
-
-.server-ip{
+.ip-box{
     margin-top:50px;
 
     display:inline-flex;
     align-items:center;
-    gap:12px;
+    gap:15px;
+
+    border:1px solid var(--border);
 
     background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-
-    padding:14px 18px;
 
     border-radius:16px;
+
+    padding:14px 18px;
 }
 
-.server-ip button{
+.ip-copy{
     border:none;
-    cursor:pointer;
 
     background:var(--orange);
-
     color:white;
+
+    border-radius:10px;
 
     padding:10px 14px;
 
-    border-radius:10px;
+    cursor:pointer;
 
     font-weight:700;
 }
 
-/* ---------------- VOTING ---------------- */
+/* ================= SECTION ================= */
 
-.voting{
+.section{
     max-width:1300px;
     margin:auto;
-    padding:100px 25px;
+    padding:0 20px 120px;
 }
 
-.heading{
+.section-title{
     text-align:center;
-    margin-bottom:60px;
+    margin-bottom:50px;
 }
 
-.heading h2{
+.section-title h2{
     font-size:3rem;
     font-weight:900;
 }
 
-.heading p{
+.section-title p{
     color:var(--muted);
     margin-top:10px;
 }
@@ -272,33 +310,41 @@ nav{
 }
 
 .vote-card{
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,.05),
-        rgba(255,255,255,.02)
-    );
+    background:var(--card);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(14px);
 
     border-radius:24px;
 
     padding:28px;
 
-    transition:.3s ease;
+    position:relative;
+
+    transition:.3s;
 }
 
 .vote-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px);
 
-    border-color:rgba(255,139,56,.45);
+    border-color:rgba(255,122,28,.4);
 
     box-shadow:
-    0 20px 50px rgba(255,139,56,.18);
+        0 25px 60px rgba(255,122,28,.15);
+}
+
+.number{
+    color:var(--orange2);
+    font-size:.8rem;
+    font-weight:800;
+    letter-spacing:2px;
+
+    margin-bottom:14px;
 }
 
 .vote-card h3{
-    font-size:1.5rem;
+    font-size:1.6rem;
     margin-bottom:12px;
 }
 
@@ -308,47 +354,53 @@ nav{
     margin-bottom:25px;
 }
 
-.vote-button{
+.vote-link{
     display:block;
+
+    width:100%;
 
     text-align:center;
 
     text-decoration:none;
 
-    width:100%;
-
     padding:14px;
 
-    border-radius:14px;
+    border-radius:12px;
+
+    font-weight:800;
 
     background:linear-gradient(
-      135deg,
-      var(--orange),
-      var(--orange-bright)
+        135deg,
+        var(--orange),
+        var(--orange2)
     );
 
-    color:black;
-    font-weight:800;
+    color:#111;
 }
 
-/* ---------------- FOOTER ---------------- */
+/* ================= FOOTER ================= */
 
 footer{
     text-align:center;
+
     padding:40px;
-    border-top:1px solid rgba(255,255,255,.08);
+
+    border-top:1px solid var(--border);
+
     color:var(--muted);
 }
 
-@media(max-width:800px){
+/* ================= MOBILE ================= */
 
-.nav-wrapper{
+@media(max-width:768px){
+
+.navbar{
     flex-direction:column;
-    gap:16px;
+    gap:15px;
 }
 
 .hero h1{
-    font-size:4rem;
+    font-size:3.5rem;
 }
 
 }
@@ -358,7 +410,7 @@ footer{
 <body>
 
 <nav>
-    <div class="nav-wrapper">
+    <div class="navbar">
 
         <a href="https://mc-kingdom.net/" class="logo">
             <img src="logo.png" alt="Kingdom Network">
@@ -366,8 +418,9 @@ footer{
         </a>
 
         <div class="nav-links">
-            <a href="https://mc-kingdom.net/">Main Site</a>
-            <a href="https://store.mc-kingdom.net/" class="store-btn">Store</a>
+            <a href="https://mc-kingdom.net/">Home</a>
+            #voteVote</a>
+            <a class="store" href="https://store.mc-kingdom.net/">Store</a>
         </div>
 
     </div>
@@ -377,82 +430,91 @@ footer{
 
     <div class="hero-content">
 
-        <div class="hero-badge">
-            Kingdom Network • Cobblemon
+        <img class="hero-logo" src="logo.png" alt="Kingdom">
+
+        <div class="badge">
+            KINGDOM NETWORK • COBBLEMON
         </div>
 
         <h1>
-            Vote For The
-            <span>Kingdom</span>
+            Vote For The <span>Kingdom</span>
         </h1>
 
         <p>
-            Help Kingdom Network reach more players by voting on every server list.
-            The more votes we receive, the more trainers discover our world.
+            Every vote helps Kingdom Network climb the rankings and reach new players.
+            Support the server by voting daily across all listing sites below.
         </p>
 
         <div class="hero-buttons">
-            #vote-sites
+            #vote
                 Start Voting
             </a>
 
-            <a href="https://store.mc-kingdom.net/" class="button secondary">
+            <a href="https://store.mc-kingdom.net/" class="btn btn-secondary">
                 Visit Store
             </a>
         </div>
 
-        <div class="server-ip">
-            <span id="ip">play.mc-kingdom.net</span>
-            <button onclick="copyIP()">Copy IP</button>
+        <div class="ip-box">
+            <span id="serverip">play.mc-kingdom.net</span>
+            <button class="ip-copy" onclick="copyIP(this)">
+                Copy IP
+            </button>
         </div>
 
     </div>
 
 </section>
 
-<section id="vote-sites" class="voting">
+<section id="vote" class="section">
 
-    <div class="heading">
+    <div class="section-title">
         <h2>Vote Sites</h2>
-        <p>Vote on all platforms daily to support the server.</p>
+        <p>Open each site and vote for Kingdom Network.</p>
     </div>
 
     <div class="vote-grid">
 
         <div class="vote-card">
+            <div class="number">01</div>
             <h3>TopG</h3>
-            <p>Help our server grow and gain visibility on TopG.</p>
-            <a class="vote-button" href="https://topg.org/minecraft-servers/server-684701" target="_blank">Vote Now</a>
+            <p>Vote for Kingdom Network on TopG.</p>
+            <a class="vote-link" href="https://topg.org/minecraft-servers/server-684701" target="_blank">Vote Now</a>
         </div>
 
         <div class="vote-card">
+            <div class="number">02</div>
             <h3>MinecraftServers</h3>
-            <p>Support Kingdom Network by voting on MinecraftServers.</p>
-            <a class="vote-button" href="https://minecraftservers.org/vote/690992" target="_blank">Vote Now</a>
+            <p>Support Kingdom Network through MinecraftServers.</p>
+            <a class="vote-link" href="https://minecraftservers.org/vote/690992" target="_blank">Vote Now</a>
         </div>
 
         <div class="vote-card">
+            <div class="number">03</div>
             <h3>MinecraftBuzz</h3>
-            <p>Cast your daily vote and help new players find the server.</p>
-            <a class="vote-button" href="https://minecraft.buzz/vote/kingdom-network" target="_blank">Vote Now</a>
+            <p>Vote daily on MinecraftBuzz.</p>
+            <a class="vote-link" href="https://minecraft.buzz/vote/kingdom-network" target="_blank">Vote Now</a>
         </div>
 
         <div class="vote-card">
+            <div class="number">04</div>
             <h3>MCSL</h3>
-            <p>Daily votes help improve server rankings and exposure.</p>
-            <a class="vote-button" href="https://minecraft-server-list.com/server/522216/vote/" target="_blank">Vote Now</a>
+            <p>Support Kingdom Network on Minecraft Server List.</p>
+            <a class="vote-link" href="https://minecraft-server-list.com/server/522216/vote/" target="_blank">Vote Now</a>
         </div>
 
         <div class="vote-card">
+            <div class="number">05</div>
             <h3>MC-SL</h3>
-            <p>Support the community with your daily vote.</p>
-            <a class="vote-button" href="https://minecraft-serverlist.com/server/5959/vote" target="_blank">Vote Now</a>
+            <p>Vote on MC-SL and help our community grow.</p>
+            <a class="vote-link" href="https://minecraft-serverlist.com/server/5959/vote" target="_blank">Vote Now</a>
         </div>
 
         <div class="vote-card">
+            <div class="number">06</div>
             <h3>Minecraft-MP</h3>
-            <p>Help Kingdom Network climb the rankings.</p>
-            <a class="vote-button" href="https://minecraft-mp.com/server/361682/vote/" target="_blank">Vote Now</a>
+            <p>Cast your vote on Minecraft-MP.</p>
+            <a class="vote-link" href="https://minecraft-mp.com/server/361682/vote/" target="_blank">Vote Now</a>
         </div>
 
     </div>
@@ -465,17 +527,16 @@ footer{
 
 <script>
 
-function copyIP() {
+function copyIP(button){
 
     navigator.clipboard.writeText("play.mc-kingdom.net");
 
-    const button = event.target;
-
-    button.textContent = "Copied!";
+    button.innerText = "Copied!";
 
     setTimeout(() => {
-        button.textContent = "Copy IP";
-    }, 1500);
+        button.innerText = "Copy IP";
+    },1500);
+
 }
 
 </script>
