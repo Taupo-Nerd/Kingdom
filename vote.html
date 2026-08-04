@@ -2,559 +2,620 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vote • Kingdom Network</title>
-  <meta name="description" content="Vote for Kingdom Network on Minecraft server lists and earn in-game rewards every day." />
+  <meta name="description" content="Vote daily for Kingdom Network and claim rewards in-game." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg0: #07060b;
-      --bg1: #0e0b16;
-      --card: #0f0c1b;
-      --card2: #15112a;
-      --text: #f4f1ff;
-      --muted: #b9b2d6;
-      --line: rgba(255,255,255,.08);
-      --gold: #ffcc66;
-      --orange: #ff7a2f;
-      --orange2: #ff4d2e;
-      --glow: rgba(255,122,47,.35);
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --radius: 22px;
+      --void: #03040a;
+      --ink: #0a0c16;
+      --fog: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.09);
+      --text: #f2f0ff;
+      --dim: rgba(230,226,255,.55);
+      --gold: #f0b429;
+      --ember: #ff6b2c;
+      --violet: #7c5cfc;
+      --mint: #3ee8a8;
     }
-    * { box-sizing: border-box }
-    html, body { height: 100% }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 450px at 20% 10%, rgba(255,122,47,.18), transparent 60%),
-        radial-gradient(900px 450px at 80% 15%, rgba(255,204,102,.12), transparent 60%),
-        radial-gradient(900px 700px at 50% 110%, rgba(126,87,255,.14), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none }
-    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 18px }
 
-    /* Nav */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(7,6,11,.78), rgba(7,6,11,.35));
-      border-bottom: 1px solid var(--line);
+    * { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--void);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    .nav-inner {
+
+    /* ambient backdrop */
+    .aurora {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, rgba(124,92,252,.22), transparent 50%),
+        radial-gradient(ellipse 60% 40% at 90% 0%, rgba(240,180,41,.14), transparent 45%),
+        radial-gradient(ellipse 50% 60% at 50% 110%, rgba(255,107,44,.1), transparent 50%);
+    }
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent);
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px 64px;
+    }
+
+    /* ── top bar ── */
+    header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 14px 0;
+      gap: 16px;
+      padding: 20px 0 8px;
+      flex-wrap: wrap;
     }
-    .brand {
+    .logo {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      text-decoration: none;
+      color: inherit;
     }
-    .brand-logo {
-      width: 40px;
-      height: 40px;
+    .logo-mark {
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
-      object-fit: contain;
-      box-shadow: 0 10px 30px var(--glow);
+      background: linear-gradient(135deg, var(--gold), var(--ember));
+      display: grid;
+      place-items: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: #0a0610;
+      letter-spacing: .02em;
+      box-shadow: 0 0 32px rgba(240,180,41,.35);
     }
-    .links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap }
-    .link {
-      padding: 10px 12px;
-      border-radius: 14px;
-      color: var(--muted);
-      border: 1px solid transparent;
-      transition: .18s ease;
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: .08em;
+      line-height: 1;
     }
-    .link:hover { color: var(--text); border-color: var(--line); background: rgba(255,255,255,.03) }
-    .link.active {
-      color: var(--text);
-      border-color: rgba(255,122,47,.28);
-      background: rgba(255,122,47,.08);
-      box-shadow: 0 10px 30px rgba(255,122,47,.12);
+    .logo-text span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .22em;
+      color: var(--dim);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      margin-top: 2px;
     }
-    .pill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,204,102,.28);
-      background: rgba(255,204,102,.08);
-      color: var(--text);
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 14px;
-    }
-    .pill svg { opacity: .9 }
 
-    /* Hero */
-    .hero { padding: 54px 0 26px }
-    .panel {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(21,17,42,.76), rgba(15,12,27,.76));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: .18s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--fog) }
+    .nav-links a.on {
+      color: var(--void);
+      background: var(--gold);
+    }
+
+    .ip-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 6px 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(240,180,41,.35);
+      background: rgba(240,180,41,.08);
+      font-size: 13px;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+    .ip-chip code {
+      font-family: inherit;
+      letter-spacing: .02em;
+    }
+    .ip-chip button {
+      border: 0;
+      background: rgba(255,255,255,.1);
+      color: var(--text);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: .15s;
+    }
+    .ip-chip button:hover { background: rgba(255,255,255,.18) }
+
+    /* ── hero ── */
+    .hero {
+      margin-top: 36px;
+      text-align: center;
       position: relative;
     }
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: -120px -120px auto auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,204,102,.35), transparent 60%);
-      filter: blur(2px);
-      pointer-events: none;
-    }
-    .panel-body { padding: 26px }
-    .kicker {
+    .badge-row {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
       font-size: 12px;
-    }
-    .title {
-      margin: 10px 0 10px;
-      font-size: clamp(32px, 5vw, 44px);
-      line-height: 1.02;
-      font-weight: 1000;
-      letter-spacing: -.02em;
+      font-weight: 600;
+      color: var(--dim);
+      letter-spacing: .06em;
       text-transform: uppercase;
+      margin-bottom: 18px;
     }
-    .title .accent {
-      background: linear-gradient(90deg, var(--gold), var(--orange));
+    .badge-row .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 10px var(--mint);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1) }
+      50% { opacity: .5; transform: scale(.85) }
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 10vw, 88px);
+      line-height: .92;
+      letter-spacing: .02em;
+      margin-bottom: 16px;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(110deg, var(--gold), var(--ember));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    .sub {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
-      max-width: 58ch;
+
+    .lede {
+      max-width: 420px;
+      margin: 0 auto 28px;
+      color: var(--dim);
+      font-size: 15.5px;
+      line-height: 1.65;
+      font-weight: 500;
     }
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      font-weight: 800;
-      transition: .18s ease;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.06) }
-    .btn-primary {
-      border-color: rgba(255,122,47,.35);
-      background: linear-gradient(90deg, rgba(255,122,47,.24), rgba(255,204,102,.12));
-      box-shadow: 0 18px 60px rgba(255,122,47,.18);
-    }
-    .btn-primary:hover { box-shadow: 0 18px 70px rgba(255,122,47,.26) }
-    .note {
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      border: 1px dashed rgba(255,204,102,.25);
-      background: rgba(255,204,102,.06);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Rewards strip */
-    .rewards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 18px;
-    }
-    @media (max-width: 640px) {
-      .rewards { grid-template-columns: 1fr }
-    }
-    .reward {
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .reward .k {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font: inherit;
       font-weight: 700;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s, background .15s;
     }
-    .reward .v {
-      margin-top: 4px;
-      font-weight: 900;
-      font-size: 15px;
+    .btn:hover { transform: translateY(-2px) }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), #e8951a);
+      color: #120a04;
+      box-shadow: 0 12px 32px rgba(240,180,41,.3);
     }
+    .btn-gold:hover { box-shadow: 0 16px 40px rgba(240,180,41,.4) }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--fog) }
 
-    /* Vote grid */
-    .section { padding: 10px 0 56px }
-    .section-title {
+    /* reward ticks */
+    .ticks {
       display: flex;
-      align-items: end;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .tick {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .tick i {
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-style: normal;
+    }
+    .tick:nth-child(1) i { background: rgba(240,180,41,.15); color: var(--gold) }
+    .tick:nth-child(2) i { background: rgba(62,232,168,.12); color: var(--mint) }
+    .tick:nth-child(3) i { background: rgba(124,92,252,.15); color: #a78bfa }
+
+    /* ── section ── */
+    .section-head {
+      display: flex;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 12px;
-      margin: 18px 0 14px;
+      margin: 48px 0 18px;
       flex-wrap: wrap;
     }
-    .section-title h2 {
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: .02em;
-      text-transform: uppercase;
+    .section-head h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: .06em;
     }
-    .section-title p { margin: 0; color: var(--muted); font-size: 14px }
-    .grid {
+    .section-head p {
+      color: var(--dim);
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .section-head code {
+      color: var(--gold);
+      background: rgba(240,180,41,.1);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    /* ── vote cards ── */
+    .board {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
     }
-    @media (max-width: 980px) {
-      .grid { grid-template-columns: repeat(2, 1fr) }
+    @media (max-width: 900px) {
+      .board { grid-template-columns: repeat(2, 1fr) }
     }
-    @media (max-width: 640px) {
-      .grid { grid-template-columns: 1fr }
+    @media (max-width: 520px) {
+      .board { grid-template-columns: 1fr }
     }
-    .card {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(21,17,42,.62), rgba(15,12,27,.62));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-      transition: border-color .2s ease, transform .2s ease;
-    }
-    .card:hover {
-      border-color: rgba(255,122,47,.28);
-      transform: translateY(-2px);
-    }
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: auto -120px -140px auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(126,87,255,.22), transparent 60%);
-      pointer-events: none;
-      filter: blur(1px);
-    }
-    .card-body { padding: 18px; position: relative; z-index: 1 }
+
     .site {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      padding: 18px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      overflow: hidden;
+    }
+    .site::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--ember), var(--violet));
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .site:hover {
+      border-color: rgba(240,180,41,.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,0,0,.45);
+    }
+    .site:hover::before { opacity: 1 }
+
+    .site-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
       gap: 8px;
-      padding: 8px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,204,102,.22);
-      background: rgba(255,204,102,.07);
-      color: var(--text);
-      font-weight: 900;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      font-size: 12px;
-      white-space: nowrap;
+    }
+    .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: .1em;
+      color: var(--gold);
+      background: rgba(240,180,41,.12);
+      padding: 3px 8px;
+      border-radius: 6px;
     }
     .site-name {
-      margin-top: 10px;
-      font-weight: 1000;
-      font-size: 18px;
-      letter-spacing: .01em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: .04em;
+      margin-top: 6px;
     }
-    .desc {
-      margin: 0 0 14px;
-      color: var(--muted);
+    .site-desc {
+      color: var(--dim);
+      font-size: 12.5px;
       line-height: 1.5;
-      font-size: 14px;
+      font-weight: 500;
+      flex: 1;
     }
-    .card-actions { display: flex; gap: 10px; flex-wrap: wrap }
-    .btn-small { padding: 10px 12px; border-radius: 14px; font-weight: 900 }
-    .btn-ghost {
-      border-color: rgba(255,255,255,.10);
-      color: var(--muted);
-    }
-    .btn-ghost:hover { color: var(--text) }
 
-    /* Tooltip for rewards */
-    .tooltip-wrap { position: relative }
-    .tooltip {
-      position: absolute;
-      bottom: calc(100% + 10px);
-      left: 50%;
-      transform: translateX(-50%) translateY(4px);
-      background: #1a152e;
-      border: 1px solid rgba(255,204,102,.3);
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 13px;
-      line-height: 1.5;
+    .site-actions {
+      display: flex;
+      gap: 6px;
+    }
+    .site-actions a,
+    .site-actions button {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 8px;
+      border-radius: 10px;
+      font: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: .15s;
+    }
+    .vote-btn {
+      background: linear-gradient(135deg, rgba(240,180,41,.25), rgba(255,107,44,.15));
+      border-color: rgba(240,180,41,.4) !important;
       color: var(--text);
-      white-space: pre-line;
-      min-width: 180px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+    .vote-btn:hover {
+      background: linear-gradient(135deg, rgba(240,180,41,.4), rgba(255,107,44,.25));
+    }
+    .copy-btn {
+      background: transparent;
+      border-color: var(--line) !important;
+      color: var(--dim);
+    }
+    .copy-btn:hover {
+      color: var(--text);
+      background: var(--fog);
+    }
+
+    /* rewards pop */
+    .rewards-btn {
+      position: relative;
+      border: 0;
+      background: transparent;
+      color: var(--dim);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 0;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .rewards-btn:hover { color: var(--gold) }
+    .pop {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      right: 0;
+      min-width: 160px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #0e101c;
+      border: 1px solid rgba(240,180,41,.3);
+      box-shadow: 0 16px 40px rgba(0,0,0,.55);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--dim);
+      text-align: left;
+      text-transform: none;
+      letter-spacing: 0;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .15s ease, transform .15s ease;
+      transform: translateY(4px);
+      transition: .15s;
       z-index: 20;
     }
-    .tooltip-wrap:hover .tooltip,
-    .tooltip-wrap:focus-within .tooltip {
+    .rewards-btn:hover .pop,
+    .rewards-btn:focus-within .pop {
       opacity: 1;
-      transform: translateX(-50%) translateY(0);
+      transform: translateY(0);
     }
-    .tooltip strong {
+    .pop strong {
+      display: block;
       color: var(--gold);
-      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
-    .foot {
-      margin-top: 34px;
-      padding: 18px 0 34px;
+    /* footer */
+    footer {
+      margin-top: 48px;
+      padding-top: 28px;
       border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
       text-align: center;
+      color: var(--dim);
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 500;
     }
-    .spark {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--gold), var(--orange2));
+    footer a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    footer .thanks {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: .06em;
+      background: linear-gradient(90deg, var(--gold), var(--ember));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      font-weight: 1000;
+      display: inline-block;
+      margin-top: 4px;
     }
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="/">
-        <img src="logo.png" alt="Kingdom Network Logo" class="brand-logo" width="40" height="40">
-        <span>Kingdom Network</span>
-      </a>
-      <nav class="links" aria-label="Primary">
-        <a class="link active" href="/vote">Vote</a>
-        <a class="link" href="https://mc-kingdom.net/info">Info</a>
-        <a class="link" href="https://store.mc-kingdom.net/" target="_blank" rel="noopener">Store</a>
-        <a class="link" href="https://discord.gg/GYr7kNvP9b" target="_blank" rel="noopener">Discord</a>
-        <span class="pill" title="Server IP">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M9 9h10v10H9V9Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M5 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v0" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          <strong id="ipText">play.mc-kingdom.net</strong>
-          <button class="btn btn-small btn-ghost" id="copyIpBtn" type="button" aria-label="Copy server IP">Copy</button>
-        </span>
-      </nav>
-    </div>
-  </header>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
 
-  <!-- HERO -->
-  <main class="wrap">
-    <section class="hero">
-      <article class="panel">
-        <div class="panel-body">
-          <div class="kicker">✦ Premier Cobblemon Server ✦</div>
-          <h1 class="title"><span class="accent">Vote</span> for the Kingdom</h1>
-          <p class="sub">
-            Voting keeps <strong>Kingdom Network</strong> visible on server lists and helps new trainers find us.
-            Grab rewards in-game after voting.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#vote-sites">Vote now →</a>
-            <a class="btn" href="https://store.mc-kingdom.net/" target="_blank" rel="noopener">Visit Store →</a>
-          </div>
-
-          <div class="rewards">
-            <div class="reward">
-              <div class="k">Per vote</div>
-              <div class="v">Vote Points</div>
-            </div>
-            <div class="reward">
-              <div class="k">Per vote</div>
-              <div class="v">$1,000</div>
-            </div>
-            <div class="reward">
-              <div class="k">Progress</div>
-              <div class="v">Vote Party</div>
-            </div>
-          </div>
-
-          <div class="note">
-            Tip: Most sites allow one vote per account every 24 hours. Do them all for maximum rewards.
-          </div>
+  <div class="shell">
+    <header>
+      <a class="logo" href="/">
+        <div class="logo-mark">K</div>
+        <div class="logo-text">
+          Kingdom Network
+          <span>Cobblemon</span>
         </div>
-      </article>
+      </a>
+      <nav class="nav-links">
+        <a class="on" href="/vote">Vote</a>
+        <a href="https://mc-kingdom.net/info">Info</a>
+        <a href="https://store.mc-kingdom.net/" target="_blank" rel="noopener">Store</a>
+        <a href="https://discord.gg/GYr7kNvP9b" target="_blank" rel="noopener">Discord</a>
+        <div class="ip-chip">
+          <code id="ipText">play.mc-kingdom.net</code>
+          <button type="button" id="copyIpBtn" aria-label="Copy IP">Copy</button>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="badge-row">
+        <span class="dot"></span>
+        Daily votes · Instant rewards
+      </div>
+      <h1>Fuel the<br /><em>Kingdom</em></h1>
+      <p class="lede">
+        One click on each list keeps us climbing. Every vote drops points, cash, and party progress straight into your account.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#board">Start voting →</a>
+        <a class="btn btn-ghost" href="https://store.mc-kingdom.net/" target="_blank" rel="noopener">Store</a>
+      </div>
+      <div class="ticks">
+        <div class="tick"><i>◆</i> Vote Points</div>
+        <div class="tick"><i>$</i> $1,000 each</div>
+        <div class="tick"><i>★</i> Party progress</div>
+      </div>
     </section>
 
-    <!-- VOTE SITES -->
-    <section class="section" id="vote-sites">
-      <div class="section-title">
-        <h2>Vote Sites</h2>
-        <p>Open each link, vote, then claim rewards in-game with <code>/vote</code>.</p>
-      </div>
-      <div class="grid" id="voteGrid">
-        <!-- Cards injected by JS -->
-      </div>
-      <div class="foot">
-        Need help? Join our <a href="https://discord.gg/GYr7kNvP9b" target="_blank" rel="noopener noreferrer">Discord</a> and open a support ticket.<br />
-        <span class="spark">Thank you</span> for keeping the Kingdom alive.
-      </div>
-    </section>
-  </main>
+    <div class="section-head">
+      <h2>8 Sites · 1 Day</h2>
+      <p>Vote → return in-game → <code>/vote</code></p>
+    </div>
+
+    <div class="board" id="board"></div>
+
+    <footer>
+      Stuck? Hop into <a href="https://discord.gg/GYr7kNvP9b" target="_blank" rel="noopener noreferrer">Discord</a> and open a ticket.<br />
+      <span class="thanks">Thanks for keeping the Kingdom alive.</span>
+    </footer>
+  </div>
 
   <script>
-    // ---------- CONFIG ----------
-    const VOTE_SITES = [
-      {
-        name: "TopG",
-        tag: "Vote #1",
-        url: "https://cobblewiki.com/servers/333",
-        description: "Help our server grow by casting your vote.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      },
-      {
-        name: "CobbleWiki",
-        tag: "Vote #2",
-        url: "https://minecraftservers.org/vote/690992",
-        description: "Help bump the server by voting.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      },
-      {
-        name: "CobblemonServers",
-        tag: "Vote #3",
-        url: "https://cobblemonservers.org/server/kingdom-network",
-        description: "Help bump the server by voting.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      },
-      {
-        name: "MinecraftServers",
-        tag: "Vote #4",
-        url: "https://minecraftservers.org/vote/690992",
-        description: "Help bump the server by voting.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      },
-      {
-        name: "MinecraftBuzz",
-        tag: "Vote #5",
-        url: "https://minecraft.buzz/vote/kingdom-network",
-        description: "Support the server with your daily vote.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      },
-      {
-        name: "MCSL",
-        tag: "Vote #6",
-        url: "https://minecraft-server-list.com/server/522216/vote/",
-        description: "Vote here every day for bonus rewards.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      },
-      {
-        name: "MC-SL",
-        tag: "Vote #7",
-        url: "https://minecraft-serverlist.com/server/5959/vote",
-        description: "Help our server grow by casting your vote.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      },
-      {
-        name: "Minecraft-MP",
-        tag: "Vote #8",
-        url: "https://minecraft-mp.com/server/361682/vote/",
-        description: "Vote here daily for additional rewards.",
-        rewards: "§6Rewards:\n§7• Vote Points\n§7• $1,000\n§7• Vote Party Progress"
-      }
+    const SITES = [
+      { name: "TopG", url: "https://cobblewiki.com/servers/333", desc: "Cast your vote and watch the rank rise." },
+      { name: "CobbleWiki", url: "https://minecraftservers.org/vote/690992", desc: "A quick bump that helps new players find us." },
+      { name: "CobblemonServers", url: "https://cobblemonservers.org/server/kingdom-network", desc: "Support the server — grab your daily haul." },
+      { name: "MinecraftServers", url: "https://minecraftservers.org/vote/690992", desc: "Put the Kingdom on more trainers’ radar." },
+      { name: "MinecraftBuzz", url: "https://minecraft.buzz/vote/kingdom-network", desc: "One vote closer to the next Vote Party." },
+      { name: "MCSL", url: "https://minecraft-server-list.com/server/522216/vote/", desc: "Points, $1,000, and party progress await." },
+      { name: "MC-SL", url: "https://minecraft-serverlist.com/server/5959/vote", desc: "Daily vote. Same rewards. Zero hassle." },
+      { name: "Minecraft-MP", url: "https://minecraft-mp.com/server/361682/vote/", desc: "Vote once. Climb the rankings." }
     ];
 
-    // Strip Minecraft colour codes for tooltip display
-    function cleanRewards(text) {
-      return text
-        .replace(/§[0-9a-fk-or]/gi, "")
-        .replace(/^Rewards:\s*/i, "Rewards\n");
-    }
+    const rewardsHtml = `<strong>Rewards</strong>• Vote Points<br>• $1,000<br>• Vote Party Progress`;
 
-    // ---------- RENDER VOTE CARDS ----------
-    const grid = document.getElementById("voteGrid");
-    grid.innerHTML = VOTE_SITES.map((site) => `
-      <article class="card">
-        <div class="card-body">
-          <div class="site">
-            <div>
-              <div class="badge">${site.tag}</div>
-              <div class="site-name">${site.name}</div>
-            </div>
-            <div class="tooltip-wrap">
-              <button class="btn btn-small btn-ghost" type="button" aria-label="View rewards for ${site.name}">Rewards</button>
-              <div class="tooltip" role="tooltip">
-                <strong>Rewards</strong>
-                ${cleanRewards(site.rewards).replace(/\n/g, "<br>")}
-              </div>
-            </div>
+    document.getElementById("board").innerHTML = SITES.map((s, i) => `
+      <article class="site">
+        <div class="site-top">
+          <div>
+            <span class="num">0${i + 1}</span>
+            <div class="site-name">${s.name}</div>
           </div>
-          <p class="desc">${site.description}</p>
-          <div class="card-actions">
-            <a class="btn btn-small btn-primary" href="${site.url}" target="_blank" rel="noopener noreferrer">Vote →</a>
-            <button class="btn btn-small btn-ghost" type="button" data-copy="${site.url}">Copy link</button>
-          </div>
+          <button class="rewards-btn" type="button" aria-label="Rewards">
+            Rewards
+            <span class="pop">${rewardsHtml}</span>
+          </button>
+        </div>
+        <p class="site-desc">${s.desc}</p>
+        <div class="site-actions">
+          <a class="vote-btn" href="${s.url}" target="_blank" rel="noopener noreferrer">Vote →</a>
+          <button class="copy-btn" type="button" data-copy="${s.url}">Copy</button>
         </div>
       </article>
     `).join("");
 
-    // Copy link buttons
     document.addEventListener("click", async (e) => {
-      const btn = e.target.closest("button[data-copy]");
+      const btn = e.target.closest("[data-copy]");
       if (!btn) return;
       try {
-        await navigator.clipboard.writeText(btn.getAttribute("data-copy"));
-        btn.textContent = "Copied!";
-        setTimeout(() => btn.textContent = "Copy link", 1200);
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        btn.textContent = "Done";
+        setTimeout(() => btn.textContent = "Copy", 1100);
       } catch {
-        btn.textContent = "Copy failed";
-        setTimeout(() => btn.textContent = "Copy link", 1200);
+        btn.textContent = "Fail";
+        setTimeout(() => btn.textContent = "Copy", 1100);
       }
     });
 
-    // ---------- COPY SERVER IP ----------
-    const copyIpBtn = document.getElementById("copyIpBtn");
-    copyIpBtn?.addEventListener("click", async () => {
+    document.getElementById("copyIpBtn")?.addEventListener("click", async () => {
       const ip = document.getElementById("ipText")?.textContent?.trim() || "";
+      const btn = document.getElementById("copyIpBtn");
       try {
         await navigator.clipboard.writeText(ip);
-        copyIpBtn.textContent = "Copied!";
-        setTimeout(() => copyIpBtn.textContent = "Copy", 1200);
+        btn.textContent = "Copied";
+        setTimeout(() => btn.textContent = "Copy", 1100);
       } catch {
-        copyIpBtn.textContent = "Copy failed";
-        setTimeout(() => copyIpBtn.textContent = "Copy", 1200);
+        btn.textContent = "Fail";
+        setTimeout(() => btn.textContent = "Copy", 1100);
       }
     });
   </script>
