@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vote • Kingdom Network</title>
-  <meta name="description" content="Vote daily for Kingdom Network and claim rewards in-game." />
+  <meta name="description" content="Vote daily for Kingdom Network and earn rewards automatically." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
   <style>
@@ -416,56 +416,7 @@
       background: var(--fog);
     }
 
-    /* rewards pop */
-    .rewards-btn {
-      position: relative;
-      border: 0;
-      background: transparent;
-      color: var(--dim);
-      font: inherit;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 4px 0;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-    .rewards-btn:hover { color: var(--gold) }
-    .pop {
-      position: absolute;
-      bottom: calc(100% + 8px);
-      right: 0;
-      min-width: 160px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: #0e101c;
-      border: 1px solid rgba(240,180,41,.3);
-      box-shadow: 0 16px 40px rgba(0,0,0,.55);
-      font-size: 12.5px;
-      line-height: 1.55;
-      color: var(--dim);
-      text-align: left;
-      text-transform: none;
-      letter-spacing: 0;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(4px);
-      transition: .15s;
-      z-index: 20;
-    }
-    .rewards-btn:hover .pop,
-    .rewards-btn:focus-within .pop {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .pop strong {
-      display: block;
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
+    
 
     /* footer */
     footer {
@@ -543,7 +494,7 @@
 
     <div class="section-head">
       <h2>8 Sites · 1 Day</h2>
-      <p>Vote → return in-game → <code>/vote</code></p>
+      <p>Vote on each site — rewards land in your inventory automatically.</p>
     </div>
 
     <div class="board" id="board"></div>
@@ -561,12 +512,10 @@
       { name: "CobblemonServers", url: "https://cobblemonservers.org/server/kingdom-network", desc: "Daily vote → instant in-game loot." },
       { name: "MinecraftServers", url: "https://minecraftservers.org/vote/690992", desc: "Keep the Kingdom visible to new trainers." },
       { name: "MinecraftBuzz", url: "https://minecraft.buzz/vote/kingdom-network", desc: "Your vote fuels the next Vote Party." },
-      { name: "MCSL", url: "https://minecraft-server-list.com/server/522216/vote/", desc: "Claim points, cash, and party progress." },
+      { name: "MCSL", url: "https://minecraft-server-list.com/server/522216/vote/", desc: "Points, cash, and party progress — auto-delivered." },
       { name: "MC-SL", url: "https://minecraft-serverlist.com/server/5959/vote", desc: "Fast vote. Real rewards. Zero hassle." },
       { name: "Minecraft-MP", url: "https://minecraft-mp.com/server/361682/vote/", desc: "Stack another free reward before reset." }
     ];
-
-    const rewardsHtml = `<strong>Rewards</strong>• Vote Points<br>• $1,000<br>• Vote Party Progress`;
 
     document.getElementById("board").innerHTML = SITES.map((s, i) => `
       <article class="site">
@@ -575,10 +524,6 @@
             <span class="num">0${i + 1}</span>
             <div class="site-name">${s.name}</div>
           </div>
-          <button class="rewards-btn" type="button" aria-label="Rewards">
-            Rewards
-            <span class="pop">${rewardsHtml}</span>
-          </button>
         </div>
         <p class="site-desc">${s.desc}</p>
         <div class="site-actions">
