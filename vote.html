@@ -83,13 +83,8 @@
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--gold), var(--ember));
-      display: grid;
-      place-items: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      color: #0a0610;
-      letter-spacing: .02em;
+      object-fit: contain;
+      display: block;
       box-shadow: 0 0 32px rgba(240,180,41,.35);
     }
     .logo-text {
@@ -508,7 +503,7 @@
   <div class="shell">
     <header>
       <a class="logo" href="/">
-        <div class="logo-mark">K</div>
+        <img src="logo.png" alt="Kingdom Network" class="logo-mark" width="42" height="42">
         <div class="logo-text">
           Kingdom Network
           <span>Cobblemon</span>
@@ -561,14 +556,14 @@
 
   <script>
     const SITES = [
-      { name: "TopG", url: "https://cobblewiki.com/servers/333", desc: "Cast your vote and watch the rank rise." },
-      { name: "CobbleWiki", url: "https://minecraftservers.org/vote/690992", desc: "A quick bump that helps new players find us." },
-      { name: "CobblemonServers", url: "https://cobblemonservers.org/server/kingdom-network", desc: "Support the server — grab your daily haul." },
-      { name: "MinecraftServers", url: "https://minecraftservers.org/vote/690992", desc: "Put the Kingdom on more trainers’ radar." },
-      { name: "MinecraftBuzz", url: "https://minecraft.buzz/vote/kingdom-network", desc: "One vote closer to the next Vote Party." },
-      { name: "MCSL", url: "https://minecraft-server-list.com/server/522216/vote/", desc: "Points, $1,000, and party progress await." },
-      { name: "MC-SL", url: "https://minecraft-serverlist.com/server/5959/vote", desc: "Daily vote. Same rewards. Zero hassle." },
-      { name: "Minecraft-MP", url: "https://minecraft-mp.com/server/361682/vote/", desc: "Vote once. Climb the rankings." }
+      { name: "TopG", url: "https://cobblewiki.com/servers/333", desc: "One click. Rank climbs. Rewards drop." },
+      { name: "CobbleWiki", url: "https://minecraftservers.org/vote/690992", desc: "Bump us up the list in under 10 seconds." },
+      { name: "CobblemonServers", url: "https://cobblemonservers.org/server/kingdom-network", desc: "Daily vote → instant in-game loot." },
+      { name: "MinecraftServers", url: "https://minecraftservers.org/vote/690992", desc: "Keep the Kingdom visible to new trainers." },
+      { name: "MinecraftBuzz", url: "https://minecraft.buzz/vote/kingdom-network", desc: "Your vote fuels the next Vote Party." },
+      { name: "MCSL", url: "https://minecraft-server-list.com/server/522216/vote/", desc: "Claim points, cash, and party progress." },
+      { name: "MC-SL", url: "https://minecraft-serverlist.com/server/5959/vote", desc: "Fast vote. Real rewards. Zero hassle." },
+      { name: "Minecraft-MP", url: "https://minecraft-mp.com/server/361682/vote/", desc: "Stack another free reward before reset." }
     ];
 
     const rewardsHtml = `<strong>Rewards</strong>• Vote Points<br>• $1,000<br>• Vote Party Progress`;
