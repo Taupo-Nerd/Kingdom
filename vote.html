@@ -30,7 +30,6 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    /* ambient backdrop */
     .aurora {
       position: fixed;
       inset: 0;
@@ -59,7 +58,6 @@
       margin: 0 auto;
       padding: 0 20px 64px;
     }
-    /* ── top bar ── */
     header {
       display: flex;
       align-items: center;
@@ -153,33 +151,31 @@
       margin-top: 28px;
       text-align: center;
       position: relative;
-      /* pushed content down so it sits under the banner logo */
-      padding: 92px 20px 36px;
+      /* large top padding pushes all content below the banner logo */
+      padding: 140px 20px 40px;
       background-image: url("banner.png");
       background-size: cover;
-      background-position: center 20%;
+      background-position: center top;   /* banner as high as possible */
       background-repeat: no-repeat;
       border-radius: 20px;
       overflow: hidden;
-      min-height: 380px;
+      min-height: 420px;
     }
 
-    /* slightly stronger overlay for better text contrast */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(3, 4, 10, 0.18) 0%,
-        rgba(3, 4, 10, 0.42) 40%,
-        rgba(3, 4, 10, 0.68) 100%
+        rgba(3, 4, 10, 0.15) 0%,
+        rgba(3, 4, 10, 0.40) 35%,
+        rgba(3, 4, 10, 0.70) 100%
       );
       z-index: 0;
       pointer-events: none;
     }
 
-    /* keep content above overlay */
     .hero > * {
       position: relative;
       z-index: 1;
@@ -272,7 +268,6 @@
       color: var(--text);
     }
     .btn-ghost:hover { background: var(--fog) }
-    /* reward ticks */
     .ticks {
       display: flex;
       justify-content: center;
@@ -305,12 +300,11 @@
     .tick:nth-child(2) i { background: rgba(62,232,168,.12); color: var(--mint) }
     .tick:nth-child(3) i { background: rgba(124,92,252,.15); color: #a78bfa }
 
-    /* ── mobile tweaks ── */
     @media (max-width: 640px) {
       .hero {
-        padding: 72px 16px 28px;
-        min-height: 340px;
-        background-position: center 15%;
+        padding: 110px 16px 32px;
+        min-height: 380px;
+        background-position: center top;
         border-radius: 16px;
       }
       h1 {
@@ -322,16 +316,13 @@
         font-size: 14px;
         margin-bottom: 20px;
       }
-      .ticks {
-        gap: 6px;
-      }
+      .ticks { gap: 6px; }
       .tick {
         padding: 8px 11px;
         font-size: 12px;
       }
     }
 
-    /* ── section ── */
     .section-head {
       display: flex;
       align-items: flex-end;
@@ -350,14 +341,6 @@
       font-size: 13.5px;
       font-weight: 500;
     }
-    .section-head code {
-      color: var(--gold);
-      background: rgba(240,180,41,.1);
-      padding: 2px 7px;
-      border-radius: 5px;
-      font-size: 12px;
-    }
-    /* ── vote cards ── */
     .board {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -462,8 +445,6 @@
       color: var(--text);
       background: var(--fog);
     }
-   
-    /* footer */
     footer {
       margin-top: 48px;
       padding-top: 28px;
