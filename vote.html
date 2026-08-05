@@ -20,7 +20,6 @@
       --violet: #7c5cfc;
       --mint: #3ee8a8;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0 }
     html { scroll-behavior: smooth }
     body {
@@ -31,7 +30,6 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
     /* ambient backdrop */
     .aurora {
       position: fixed;
@@ -54,7 +52,6 @@
       background-size: 64px 64px;
       mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent);
     }
-
     .shell {
       position: relative;
       z-index: 1;
@@ -62,7 +59,6 @@
       margin: 0 auto;
       padding: 0 20px 64px;
     }
-
     /* ── top bar ── */
     header {
       display: flex;
@@ -102,7 +98,6 @@
       font-weight: 600;
       margin-top: 2px;
     }
-
     .nav-links {
       display: flex;
       align-items: center;
@@ -123,7 +118,6 @@
       color: var(--void);
       background: var(--gold);
     }
-
     .ip-chip {
       display: inline-flex;
       align-items: center;
@@ -159,7 +153,35 @@
       margin-top: 36px;
       text-align: center;
       position: relative;
+      padding: 56px 24px 40px;
+      background-image: url("banner.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      overflow: hidden;
     }
+
+    /* dark overlay so text stays readable on the banner */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(3, 4, 10, 0.55) 0%,
+        rgba(3, 4, 10, 0.78) 100%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* keep all hero content above the overlay */
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
     .badge-row {
       display: inline-flex;
       align-items: center;
@@ -187,13 +209,13 @@
       0%, 100% { opacity: 1; transform: scale(1) }
       50% { opacity: .5; transform: scale(.85) }
     }
-
     h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 10vw, 88px);
-      line-height: .92;
+      font-size: clamp(48px, 9vw, 84px);
+      line-height: 1;
       letter-spacing: .02em;
       margin-bottom: 16px;
+      white-space: nowrap; /* keeps it on one line */
     }
     h1 em {
       font-style: normal;
@@ -202,7 +224,6 @@
       background-clip: text;
       color: transparent;
     }
-
     .lede {
       max-width: 420px;
       margin: 0 auto 28px;
@@ -211,7 +232,6 @@
       line-height: 1.65;
       font-weight: 500;
     }
-
     .hero-actions {
       display: flex;
       justify-content: center;
@@ -219,7 +239,6 @@
       flex-wrap: wrap;
       margin-bottom: 40px;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -247,7 +266,6 @@
       color: var(--text);
     }
     .btn-ghost:hover { background: var(--fog) }
-
     /* reward ticks */
     .ticks {
       display: flex;
@@ -279,7 +297,6 @@
     .tick:nth-child(1) i { background: rgba(240,180,41,.15); color: var(--gold) }
     .tick:nth-child(2) i { background: rgba(62,232,168,.12); color: var(--mint) }
     .tick:nth-child(3) i { background: rgba(124,92,252,.15); color: #a78bfa }
-
     /* ── section ── */
     .section-head {
       display: flex;
@@ -306,7 +323,6 @@
       border-radius: 5px;
       font-size: 12px;
     }
-
     /* ── vote cards ── */
     .board {
       display: grid;
@@ -319,7 +335,6 @@
     @media (max-width: 520px) {
       .board { grid-template-columns: 1fr }
     }
-
     .site {
       position: relative;
       border-radius: 16px;
@@ -347,7 +362,6 @@
       box-shadow: 0 20px 48px rgba(0,0,0,.45);
     }
     .site:hover::before { opacity: 1 }
-
     .site-top {
       display: flex;
       align-items: flex-start;
@@ -376,7 +390,6 @@
       font-weight: 500;
       flex: 1;
     }
-
     .site-actions {
       display: flex;
       gap: 6px;
@@ -415,9 +428,7 @@
       color: var(--text);
       background: var(--fog);
     }
-
-    
-
+   
     /* footer */
     footer {
       margin-top: 48px;
@@ -450,7 +461,6 @@
 <body>
   <div class="aurora" aria-hidden="true"></div>
   <div class="grid-bg" aria-hidden="true"></div>
-
   <div class="shell">
     <header>
       <a class="logo" href="/">
@@ -477,7 +487,7 @@
         <span class="dot"></span>
         Daily votes · Instant rewards
       </div>
-      <h1>Fuel the<br /><em>Kingdom</em></h1>
+      <h1>Fuel the <em>Kingdom</em></h1>
       <p class="lede">
         One click on each list keeps us climbing. Every vote drops points, cash, and party progress straight into your account.
       </p>
@@ -498,15 +508,12 @@
       <h2>8 Sites · 1 Day</h2>
       <p>Vote on each site — Make sure you have space in your inventory!.</p>
     </div>
-
     <div class="board" id="board"></div>
-
     <footer>
       Stuck? Hop into <a href="https://discord.gg/GYr7kNvP9b" target="_blank" rel="noopener noreferrer">Discord</a> and open a ticket.<br />
       <span class="thanks">Thanks for keeping the Kingdom alive.</span>
     </footer>
   </div>
-
   <script>
     const SITES = [
       { name: "TopG", url: "https://cobblewiki.com/servers/333", desc: "One click. Rank climbs. Rewards drop." },
@@ -518,7 +525,6 @@
       { name: "MC-SL", url: "https://minecraft-serverlist.com/server/5959/vote", desc: "Fast vote. Real rewards. Zero hassle." },
       { name: "Minecraft-MP", url: "https://minecraft-mp.com/server/361682/vote/", desc: "More trainers. Stronger Kingdom." }
     ];
-
     document.getElementById("board").innerHTML = SITES.map((s, i) => `
       <article class="site">
         <div class="site-top">
@@ -534,7 +540,6 @@
         </div>
       </article>
     `).join("");
-
     document.addEventListener("click", async (e) => {
       const btn = e.target.closest("[data-copy]");
       if (!btn) return;
@@ -547,7 +552,6 @@
         setTimeout(() => btn.textContent = "Copy", 1100);
       }
     });
-
     document.getElementById("copyIpBtn")?.addEventListener("click", async () => {
       const ip = document.getElementById("ipText")?.textContent?.trim() || "";
       const btn = document.getElementById("copyIpBtn");
