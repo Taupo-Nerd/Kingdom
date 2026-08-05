@@ -150,33 +150,35 @@
 
     /* ── hero ── */
     .hero {
-      margin-top: 36px;
+      margin-top: 28px;
       text-align: center;
       position: relative;
-      padding: 56px 24px 40px;
+      padding: 36px 20px 32px;
       background-image: url("banner.png");
       background-size: cover;
-      background-position: center;
+      background-position: center 35%;
       background-repeat: no-repeat;
       border-radius: 20px;
       overflow: hidden;
+      min-height: 340px;
     }
 
-    /* dark overlay so text stays readable on the banner */
+    /* lighter overlay – banner stays visible */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(3, 4, 10, 0.55) 0%,
-        rgba(3, 4, 10, 0.78) 100%
+        rgba(3, 4, 10, 0.25) 0%,
+        rgba(3, 4, 10, 0.45) 55%,
+        rgba(3, 4, 10, 0.65) 100%
       );
       z-index: 0;
       pointer-events: none;
     }
 
-    /* keep all hero content above the overlay */
+    /* keep content above overlay */
     .hero > * {
       position: relative;
       z-index: 1;
@@ -188,14 +190,15 @@
       gap: 8px;
       padding: 6px 14px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
       font-size: 12px;
       font-weight: 600;
       color: var(--dim);
       letter-spacing: .06em;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .badge-row .dot {
       width: 7px;
@@ -211,11 +214,12 @@
     }
     h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 9vw, 84px);
+      font-size: clamp(42px, 8.5vw, 78px);
       line-height: 1;
       letter-spacing: .02em;
-      margin-bottom: 16px;
-      white-space: nowrap; /* keeps it on one line */
+      margin-bottom: 14px;
+      white-space: nowrap;
+      text-shadow: 0 4px 24px rgba(0,0,0,.55);
     }
     h1 em {
       font-style: normal;
@@ -225,19 +229,20 @@
       color: transparent;
     }
     .lede {
-      max-width: 420px;
-      margin: 0 auto 28px;
-      color: var(--dim);
-      font-size: 15.5px;
-      line-height: 1.65;
+      max-width: 440px;
+      margin: 0 auto 24px;
+      color: rgba(230,226,255,.78);
+      font-size: 15px;
+      line-height: 1.6;
       font-weight: 500;
+      text-shadow: 0 2px 12px rgba(0,0,0,.4);
     }
     .hero-actions {
       display: flex;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 28px;
     }
     .btn {
       display: inline-flex;
@@ -272,16 +277,17 @@
       justify-content: center;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
     .tick {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 16px;
+      padding: 9px 14px;
       border-radius: 12px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid var(--line);
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(6px);
       font-size: 13px;
       font-weight: 600;
     }
@@ -297,6 +303,33 @@
     .tick:nth-child(1) i { background: rgba(240,180,41,.15); color: var(--gold) }
     .tick:nth-child(2) i { background: rgba(62,232,168,.12); color: var(--mint) }
     .tick:nth-child(3) i { background: rgba(124,92,252,.15); color: #a78bfa }
+
+    /* ── mobile tweaks ── */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 28px 16px 24px;
+        min-height: 300px;
+        background-position: center 30%;
+        border-radius: 16px;
+      }
+      h1 {
+        font-size: clamp(34px, 11vw, 52px);
+        white-space: normal;
+        line-height: 1.05;
+      }
+      .lede {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .ticks {
+        gap: 6px;
+      }
+      .tick {
+        padding: 8px 11px;
+        font-size: 12px;
+      }
+    }
+
     /* ── section ── */
     .section-head {
       display: flex;
