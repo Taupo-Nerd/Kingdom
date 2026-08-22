@@ -1,1007 +1,545 @@
-<section class="mk-landing">
-
-<style>
-.mk-landing {
-    --gold: #f4c451;
-    --gold-light: #ffe9a3;
-    --dark: #07090d;
-    --dark2: #0d1118;
-    --text: #fff;
-    --muted: #9da6b5;
-
-    margin: 0;
-    padding: 0;
-    background: var(--dark);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
-}
-
-.mk-landing * {
-    box-sizing: border-box;
-}
-
-.mk-hero {
-    min-height: 820px;
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(5,7,11,.98) 0%,
-            rgba(5,7,11,.88) 38%,
-            rgba(5,7,11,.38) 75%,
-            rgba(5,7,11,.75) 100%
-        ),
-        url("https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=2400&q=90");
-
-    background-size: cover;
-    background-position: center;
-}
-
-.mk-hero-content {
-    width: min(1200px, 90%);
-    margin: auto;
-    padding: 100px 0 80px;
-}
-
-.mk-badge {
-    display: inline-block;
-
-    padding: 9px 16px;
-
-    border-radius: 50px;
-
-    background: rgba(244,196,81,.1);
-    border: 1px solid rgba(244,196,81,.3);
-
-    color: var(--gold-light);
-
-    font-size: 11px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.mk-title {
-    margin: 25px 0 0;
-
-    max-width: 800px;
-
-    font-size: clamp(55px, 9vw, 105px);
-
-    line-height: .88;
-
-    letter-spacing: -6px;
-
-    font-weight: 900;
-}
-
-.mk-title span {
-    color: var(--gold);
-}
-
-.mk-description {
-    max-width: 600px;
-
-    margin-top: 28px;
-
-    color: #c6ccd5;
-
-    font-size: 19px;
-
-    line-height: 1.7;
-}
-
-.mk-buttons {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    margin-top: 35px;
-}
-
-.mk-button {
-    display: inline-block;
-
-    padding: 15px 25px;
-
-    border-radius: 9px;
-
-    font-size: 13px;
-    font-weight: 900;
-
-    text-decoration: none;
-
-    transition: .25s;
-}
-
-.mk-button:hover {
-    transform: translateY(-3px);
-}
-
-.mk-primary {
-    background: var(--gold);
-    color: #111;
-
-    box-shadow:
-        0 12px 40px rgba(244,196,81,.2);
-}
-
-.mk-secondary {
-    color: white;
-
-    background: rgba(255,255,255,.08);
-
-    border: 1px solid rgba(255,255,255,.15);
-}
-
-.mk-ip {
-    display: inline-flex;
-    align-items: center;
-    gap: 18px;
-
-    margin-top: 30px;
-
-    padding: 12px 12px 12px 18px;
-
-    background: rgba(0,0,0,.6);
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    border-radius: 10px;
-}
-
-.mk-ip small {
-    display: block;
-
-    color: #858e9d;
-
-    font-size: 9px;
-
-    letter-spacing: 1.5px;
-
-    text-transform: uppercase;
-}
-
-.mk-ip strong {
-    font-family: monospace;
-    font-size: 15px;
-}
-
-.mk-copy {
-    border: 0;
-
-    padding: 10px 13px;
-
-    border-radius: 7px;
-
-    background: rgba(244,196,81,.15);
-
-    color: var(--gold);
-
-    cursor: pointer;
-
-    font-size: 10px;
-    font-weight: 900;
-}
-
-
-/* FEATURES */
-
-.mk-section {
-    padding: 110px 0;
-    background: var(--dark);
-}
-
-.mk-section-inner {
-    width: min(1200px, 90%);
-    margin: auto;
-}
-
-.mk-heading {
-    max-width: 700px;
-
-    margin: 0 auto 60px;
-
-    text-align: center;
-}
-
-.mk-label {
-    color: var(--gold);
-
-    font-size: 10px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-}
-
-.mk-heading h2 {
-    margin-top: 12px;
-
-    font-size: clamp(38px, 5vw, 60px);
-
-    line-height: .95;
-
-    letter-spacing: -3px;
-}
-
-.mk-heading p {
-    margin-top: 20px;
-
-    color: var(--muted);
-
-    line-height: 1.7;
-}
-
-.mk-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-.mk-card {
-    min-height: 270px;
-
-    padding: 32px;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.015)
-        );
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    transition: .3s;
-}
-
-.mk-card:hover {
-    transform: translateY(-7px);
-
-    border-color: rgba(244,196,81,.3);
-}
-
-.mk-icon {
-    width: 55px;
-    height: 55px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 14px;
-
-    background: rgba(244,196,81,.1);
-
-    border: 1px solid rgba(244,196,81,.15);
-
-    font-size: 25px;
-}
-
-.mk-card h3 {
-    margin-top: 25px;
-
-    font-size: 20px;
-}
-
-.mk-card p {
-    margin-top: 12px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* SHOWCASE */
-
-.mk-showcase {
-    width: min(1200px, 90%);
-    min-height: 560px;
-
-    margin: 0 auto 110px;
-
-    display: flex;
-    align-items: flex-end;
-
-    border-radius: 24px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            0deg,
-            rgba(3,5,8,.98),
-            rgba(3,5,8,.05)
-        ),
-        url("https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=2400&q=90");
-
-    background-size: cover;
-    background-position: center;
-}
-
-.mk-showcase-content {
-    max-width: 700px;
-
-    padding: 55px;
-}
-
-.mk-showcase-content h2 {
-    margin-top: 10px;
-
-    font-size: clamp(40px, 5vw, 65px);
-
-    line-height: .95;
-
-    letter-spacing: -4px;
-}
-
-.mk-showcase-content p {
-    margin-top: 20px;
-
-    color: #c2c8d2;
-
-    line-height: 1.7;
-}
-
-
-/* HOW TO PLAY */
-
-.mk-steps {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.mk-step {
-    padding: 35px 25px;
-
-    text-align: center;
-
-    background: rgba(255,255,255,.025);
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 18px;
-}
-
-.mk-number {
-    width: 50px;
-    height: 50px;
-
-    margin: auto;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    background: var(--gold);
-
-    color: #111;
-
-    font-weight: 900;
-}
-
-.mk-step h3 {
-    margin-top: 22px;
-}
-
-.mk-step p {
-    margin-top: 12px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* COMMUNITY */
-
-.mk-community {
-    padding: 110px 20px;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(244,196,81,.1),
-            transparent 50%
-        );
-}
-
-.mk-community-box {
-    width: min(900px, 100%);
-
-    margin: auto;
-
-    padding: 70px 30px;
-
-    border-radius: 24px;
-
-    background: rgba(255,255,255,.025);
-
-    border: 1px solid rgba(244,196,81,.15);
-}
-
-.mk-community h2 {
-    margin-top: 12px;
-
-    font-size: clamp(42px, 6vw, 70px);
-
-    letter-spacing: -4px;
-}
-
-.mk-community p {
-    max-width: 600px;
-
-    margin: 20px auto;
-
-    color: var(--muted);
-
-    line-height: 1.7;
-}
-
-
-/* FAQ */
-
-.mk-faq {
-    width: min(850px, 90%);
-    margin: auto;
-}
-
-.mk-faq details {
-    margin-bottom: 10px;
-
-    background: rgba(255,255,255,.025);
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 12px;
-}
-
-.mk-faq summary {
-    padding: 21px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-
-    list-style: none;
-}
-
-.mk-faq summary::-webkit-details-marker {
-    display: none;
-}
-
-.mk-faq summary:after {
-    content: "+";
-
-    float: right;
-
-    color: var(--gold);
-
-    font-size: 20px;
-}
-
-.mk-faq details[open] summary:after {
-    content: "−";
-}
-
-.mk-faq details p {
-    padding: 0 21px 21px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* MOBILE */
-
-@media(max-width:850px) {
-
-    .mk-grid {
-        grid-template-columns: repeat(2,1fr);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kingdom Network | Cobblemon Minecraft Server</title>
+  <meta name="description" content="Kingdom Network — the ultimate Cobblemon Minecraft experience. Explore, battle, and build your kingdom." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --bg-soft: #121820;
+      --card: #161d27;
+      --accent: #5eead4;
+      --accent-2: #38bdf8;
+      --gold: #fbbf24;
+      --text: #e8eef5;
+      --muted: #94a3b8;
+      --border: rgba(94, 234, 212, 0.15);
+      --glow: 0 0 40px rgba(94, 234, 212, 0.25);
     }
 
-    .mk-steps {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media(max-width:600px) {
-
-    .mk-hero {
-        min-height: 750px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .mk-title {
-        font-size: 56px;
-        letter-spacing: -4px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .mk-description {
-        font-size: 16px;
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .mk-buttons {
-        flex-direction: column;
+    /* Background atmosphere */
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.18), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(94, 234, 212, 0.08), transparent),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(251, 191, 36, 0.06), transparent);
     }
 
-    .mk-button {
-        width: 100%;
-        text-align: center;
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(94, 234, 212, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(94, 234, 212, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
     }
 
-    .mk-ip {
-        width: 100%;
-        justify-content: space-between;
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    .mk-grid {
-        grid-template-columns: 1fr;
+    /* Nav */
+    header {
+      padding: 1.25rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 15, 20, 0.75);
+      border-bottom: 1px solid var(--border);
     }
 
-    .mk-showcase-content {
-        padding: 30px;
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .mk-section {
-        padding: 80px 0;
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-}
-</style>
 
+    .logo span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-<!-- HERO -->
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
 
-<div class="mk-hero">
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-    <div class="mk-hero-content">
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
-        <div class="mk-badge">
-            ✦ Premier Cobblemon Server ✦
+    .nav-cta {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2dd4bf, #0ea5e9);
+      color: #0b0f14;
+      box-shadow: 0 4px 20px rgba(45, 212, 191, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(45, 212, 191, 0.45);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(94, 234, 212, 0.35);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(94, 234, 212, 0.08);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-lg {
+      padding: 1rem 1.85rem;
+      font-size: 1.05rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 6.5rem 0 5rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(94, 234, 212, 0.1);
+      border: 1px solid rgba(94, 234, 212, 0.25);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Cinzel', serif;
+    }
+
+    .stat span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Features */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(94, 234, 212, 0.4);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.15), rgba(56, 189, 248, 0.15));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      margin: 2rem 0 5rem;
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(14, 165, 233, 0.1));
+      border: 1px solid rgba(94, 234, 212, 0.25);
+      border-radius: 1.5rem;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(94, 234, 212, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-banner p {
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero-stats {
+        gap: 1.75rem;
+      }
+
+      .stat strong {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="grid-overlay"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          <span>✦</span> Kingdom Network
+        </a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#join">Join Us</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="https://discord.gg/YOUR_INVITE" class="btn btn-secondary" target="_blank" rel="noopener">Discord</a>
+          <a href="https://your-store-link.com" class="btn btn-primary" target="_blank" rel="noopener">Store</a>
         </div>
+      </nav>
+    </div>
+  </header>
 
-        <h1 class="mk-title">
-            BUILD YOUR
-            <span>KINGDOM.</span>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge">Cobblemon Survival • Online Now</div>
+        <h1>
+          Build Your <span class="gradient">Kingdom</span><br />
+          Catch Your Destiny
         </h1>
-
-        <p class="mk-description">
-            Catch Pokémon. Explore a massive world.
-            Build your kingdom. Battle other trainers.
-            Your adventure starts here.
-        </p>
-
-        <div class="mk-buttons">
-
-            <a
-                href="#mk-play"
-                class="mk-button mk-primary"
-            >
-                START YOUR ADVENTURE →
-            </a>
-
-            <a
-                href="https://discord.gg/"
-                target="_blank"
-                class="mk-button mk-secondary"
-            >
-                JOIN DISCORD
-            </a>
-
-        </div>
-
-        <div class="mk-ip">
-
-            <div>
-                <small>Server Address</small>
-                <strong>play.mc-kingdom.net</strong>
-            </div>
-
-            <button
-                class="mk-copy"
-                onclick="mkCopyIP(this)"
-            >
-                COPY IP
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- FEATURES -->
-
-<div class="mk-section">
-
-    <div class="mk-section-inner">
-
-        <div class="mk-heading">
-
-            <div class="mk-label">
-                What We Offer
-            </div>
-
-            <h2>
-                MORE THAN<br>
-                COBBLEMON.
-            </h2>
-
-            <p>
-                MC Kingdom is built around exploration,
-                progression, community and creating your
-                own adventure.
-            </p>
-
-        </div>
-
-
-        <div class="mk-grid">
-
-            <div class="mk-card">
-                <div class="mk-icon">👑</div>
-                <h3>Build Your Kingdom</h3>
-                <p>
-                    Create your base, build with friends,
-                    claim your territory and create a
-                    kingdom worth showing off.
-                </p>
-            </div>
-
-            <div class="mk-card">
-                <div class="mk-icon">🐉</div>
-                <h3>Legendary Pokémon</h3>
-                <p>
-                    Explore the world and hunt for rare,
-                    powerful and legendary Pokémon.
-                </p>
-            </div>
-
-            <div class="mk-card">
-                <div class="mk-icon">⚔️</div>
-                <h3>Battle & Compete</h3>
-                <p>
-                    Train your team, battle other players
-                    and prove yourself as the ultimate
-                    Pokémon trainer.
-                </p>
-            </div>
-
-            <div class="mk-card">
-                <div class="mk-icon">💰</div>
-                <h3>Economy & Trading</h3>
-                <p>
-                    Earn money, trade Pokémon and items,
-                    and build your fortune through the
-                    player economy.
-                </p>
-            </div>
-
-            <div class="mk-card">
-                <div class="mk-icon">🌎</div>
-                <h3>Explore</h3>
-                <p>
-                    Discover a huge Minecraft world packed
-                    with Pokémon, resources, secrets and
-                    places to explore.
-                </p>
-            </div>
-
-            <div class="mk-card">
-                <div class="mk-icon">🎉</div>
-                <h3>Events & Community</h3>
-                <p>
-                    Take part in tournaments, events,
-                    giveaways and community activities.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- SHOWCASE -->
-
-<div class="mk-showcase">
-
-    <div class="mk-showcase-content">
-
-        <div class="mk-label">
-            YOUR ADVENTURE
-        </div>
-
-        <h2>
-            YOUR WORLD.<br>
-            YOUR KINGDOM.
-        </h2>
-
         <p>
-            Whether you want to collect Pokémon,
-            build an incredible base, battle your
-            friends or simply explore, MC Kingdom
-            lets you play your way.
+          Welcome to Kingdom Network — a thriving Cobblemon Minecraft server where adventure, friendship, and legendary battles await.
         </p>
+        <div class="hero-ctas">
+          <a href="https://discord.gg/YOUR_INVITE" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z"/></svg>
+            Join Discord
+          </a>
+          <a href="https://your-store-link.com" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+            Visit Store
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>1.20+</strong>
+            <span>Minecraft Version</span>
+          </div>
+          <div class="stat">
+            <strong>Cobblemon</strong>
+            <span>Full Mod Support</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Always Online</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="mk-buttons">
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Kingdom Network?</h2>
+          <p>Everything you need for an unforgettable Cobblemon journey.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">⚔️</div>
+            <h3>Epic Battles</h3>
+            <p>Challenge trainers, join gyms, and climb the ranks in intense Cobblemon battles.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏰</div>
+            <h3>Build Your Kingdom</h3>
+            <p>Claim land, create towns, and shape the world with friends in a living survival experience.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌟</div>
+            <h3>Custom Content</h3>
+            <p>Unique quests, events, and rewards designed exclusively for Kingdom Network players.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3>Friendly Community</h3>
+            <p>Active Discord, helpful staff, and a welcoming vibe for new and veteran trainers alike.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <a
-                href="#mk-play"
-                class="mk-button mk-primary"
-            >
-                BEGIN YOUR JOURNEY
+    <!-- Final CTA -->
+    <section class="section" id="join" style="padding-top: 1rem;">
+      <div class="container">
+        <div class="cta-banner">
+          <h2>Ready to Begin Your Adventure?</h2>
+          <p>Connect with the community on Discord or support the server through our store.</p>
+          <div class="cta-buttons">
+            <a href="https://discord.gg/YOUR_INVITE" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+              Join Discord
             </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- HOW TO PLAY -->
-
-<div
-    class="mk-section"
-    id="mk-play"
->
-
-    <div class="mk-section-inner">
-
-        <div class="mk-heading">
-
-            <div class="mk-label">
-                Getting Started
-            </div>
-
-            <h2>
-                READY TO PLAY?
-            </h2>
-
-            <p>
-                Getting started with MC Kingdom is simple.
-            </p>
-
-        </div>
-
-
-        <div class="mk-steps">
-
-            <div class="mk-step">
-
-                <div class="mk-number">
-                    01
-                </div>
-
-                <h3>
-                    Install Cobblemon
-                </h3>
-
-                <p>
-                    Install Minecraft 1.21.1 and
-                    the required Cobblemon modpack.
-                </p>
-
-            </div>
-
-
-            <div class="mk-step">
-
-                <div class="mk-number">
-                    02
-                </div>
-
-                <h3>
-                    Connect
-                </h3>
-
-                <p>
-                    Add
-                    <strong>play.mc-kingdom.net</strong>
-                    to your Minecraft server list.
-                </p>
-
-            </div>
-
-
-            <div class="mk-step">
-
-                <div class="mk-number">
-                    03
-                </div>
-
-                <h3>
-                    Start Playing
-                </h3>
-
-                <p>
-                    Choose your starter Pokémon,
-                    explore the world and begin
-                    building your kingdom.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- COMMUNITY -->
-
-<div class="mk-community">
-
-    <div class="mk-community-box">
-
-        <div class="mk-label">
-            THE KINGDOM AWAITS
-        </div>
-
-        <h2>
-            JOIN THE KINGDOM.
-        </h2>
-
-        <p>
-            Meet other trainers, find people to
-            play with, get help and keep up with
-            everything happening on MC Kingdom.
-        </p>
-
-        <div class="mk-buttons"
-             style="justify-content:center;">
-
-            <a
-                href="https://discord.gg/"
-                target="_blank"
-                class="mk-button mk-primary"
-            >
-                JOIN DISCORD
+            <a href="https://your-store-link.com" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+              Open Store
             </a>
-
-            <a
-                href="https://store.mc-kingdom.net"
-                class="mk-button mk-secondary"
-            >
-                VISIT STORE
-            </a>
-
+          </div>
         </div>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener">Discord</a>
+        <a href="https://your-store-link.com" target="_blank" rel="noopener">Store</a>
+      </div>
+      <p>© 2026 Kingdom Network · Cobblemon Minecraft Server</p>
+      <p style="margin-top: 0.4rem; font-size: 0.8rem;">Not affiliated with Mojang, Microsoft, or The Pokémon Company.</p>
     </div>
-
-</div>
-
-
-<!-- FAQ -->
-
-<div class="mk-section">
-
-    <div class="mk-heading">
-
-        <div class="mk-label">
-            Need To Know
-        </div>
-
-        <h2>
-            FREQUENTLY ASKED
-        </h2>
-
-    </div>
-
-
-    <div class="mk-faq">
-
-        <details>
-            <summary>
-                How do I join MC Kingdom?
-            </summary>
-
-            <p>
-                Install Minecraft 1.21.1 and the
-                required Cobblemon modpack, then
-                connect to play.mc-kingdom.net.
-            </p>
-        </details>
-
-
-        <details>
-            <summary>
-                What Minecraft version do I need?
-            </summary>
-
-            <p>
-                MC Kingdom currently runs Minecraft
-                1.21.1 with Cobblemon.
-            </p>
-        </details>
-
-
-        <details>
-            <summary>
-                Is MC Kingdom free to play?
-            </summary>
-
-            <p>
-                Yes. You can join and play without
-                purchasing anything.
-            </p>
-        </details>
-
-
-        <details>
-            <summary>
-                Can I play with friends?
-            </summary>
-
-            <p>
-                Absolutely. Build together, explore,
-                trade Pokémon and create your kingdom.
-            </p>
-        </details>
-
-
-        <details>
-            <summary>
-                Where can I get help?
-            </summary>
-
-            <p>
-                Join the MC Kingdom Discord community
-                for support and announcements.
-            </p>
-        </details>
-
-    </div>
-
-</div>
-
-
-<script>
-
-function mkCopyIP(button) {
-
-    navigator.clipboard.writeText(
-        "play.mc-kingdom.net"
-    );
-
-    button.innerText = "COPIED!";
-
-    setTimeout(function() {
-        button.innerText = "COPY IP";
-    }, 2000);
-
-}
-
-</script>
-
-</section>
+  </footer>
+</body>
+</html>
