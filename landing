@@ -6,10 +6,7 @@
 
 <title>MC Kingdom | Premier Cobblemon Server</title>
 
-<meta name="description" content="MC Kingdom - A premier Cobblemon Minecraft server. Explore, catch Pokémon, build your kingdom and battle your way to the top.">
-
 <style>
-
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +20,7 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #07090d;
-    color: #ffffff;
+    color: white;
     overflow-x: hidden;
 }
 
@@ -33,40 +30,36 @@ a {
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: min(1200px, 90%);
     margin: auto;
 }
 
-/* =========================
-   NAV
-========================= */
+/* NAV */
 
-.nav {
+nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 75px;
+    height: 76px;
     z-index: 1000;
 
     display: flex;
     align-items: center;
 
-    background: rgba(5,7,10,0.75);
-    backdrop-filter: blur(15px);
+    background: rgba(5,7,10,.75);
+    backdrop-filter: blur(16px);
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 .nav-inner {
-    width: 90%;
-    max-width: 1250px;
+    width: min(1250px, 90%);
     margin: auto;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
@@ -76,40 +69,37 @@ a {
 }
 
 .logo span {
-    color: #f5c451;
+    color: #f4c451;
 }
 
-.nav-links {
+.links {
     display: flex;
     gap: 30px;
-    align-items: center;
 }
 
-.nav-links a {
-    color: #b9c0cb;
+.links a {
+    color: #b8c0cc;
     font-size: 14px;
-    font-weight: bold;
-    transition: 0.2s;
+    font-weight: 700;
 }
 
-.nav-links a:hover {
-    color: #f5c451;
+.links a:hover {
+    color: #f4c451;
 }
 
-.nav-discord {
-    padding: 11px 18px;
-    background: #f5c451;
+.discord {
+    background: #f4c451;
     color: #111;
+    padding: 11px 18px;
     border-radius: 8px;
-    font-weight: 800;
+    font-weight: 900;
+    font-size: 13px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
-    min-height: 850px;
+    min-height: 900px;
 
     display: flex;
     align-items: center;
@@ -119,24 +109,24 @@ a {
     background:
         linear-gradient(
             90deg,
-            rgba(3,5,8,0.97) 0%,
-            rgba(3,5,8,0.82) 35%,
-            rgba(3,5,8,0.35) 75%,
-            rgba(3,5,8,0.65) 100%
+            rgba(4,6,9,.98) 0%,
+            rgba(4,6,9,.88) 35%,
+            rgba(4,6,9,.35) 75%,
+            rgba(4,6,9,.65) 100%
         ),
         linear-gradient(
             0deg,
             #07090d 0%,
-            transparent 35%
+            transparent 40%
         ),
-        url("https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=2200&q=90");
+        url("https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=2400&q=90");
 
     background-size: cover;
     background-position: center;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 720px;
     padding-top: 80px;
 }
 
@@ -147,40 +137,41 @@ a {
 
     border-radius: 50px;
 
-    background: rgba(245,196,81,0.1);
-    border: 1px solid rgba(245,196,81,0.25);
+    background: rgba(244,196,81,.1);
 
-    color: #ffe49a;
+    border: 1px solid rgba(244,196,81,.25);
 
-    font-size: 12px;
-    font-weight: 800;
+    color: #ffe69c;
 
-    letter-spacing: 1.5px;
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
-.hero h1 {
+h1 {
     margin-top: 25px;
 
-    font-size: clamp(55px, 8vw, 100px);
+    font-size: clamp(58px, 9vw, 105px);
 
-    line-height: 0.9;
+    line-height: .88;
+
+    letter-spacing: -6px;
 
     font-weight: 900;
-
-    letter-spacing: -5px;
 }
 
-.hero h1 span {
-    color: #f5c451;
+h1 span {
+    color: #f4c451;
 }
 
-.hero p {
+.hero-text {
     margin-top: 28px;
 
     max-width: 600px;
 
-    color: #c2c8d1;
+    color: #c5cbd5;
 
     font-size: 19px;
     line-height: 1.7;
@@ -195,63 +186,66 @@ a {
 }
 
 .button {
+    display: inline-block;
+
     padding: 15px 24px;
 
     border-radius: 9px;
 
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 900;
 
-    transition: 0.25s;
+    transition: .25s;
 }
 
 .button:hover {
     transform: translateY(-3px);
 }
 
-.button-primary {
-    background: #f5c451;
+.primary {
+    background: #f4c451;
     color: #111;
 
-    box-shadow: 0 10px 40px rgba(245,196,81,0.18);
+    box-shadow: 0 12px 40px rgba(244,196,81,.2);
 }
 
-.button-secondary {
-    background: rgba(255,255,255,0.08);
+.secondary {
+    background: rgba(255,255,255,.08);
 
-    border: 1px solid rgba(255,255,255,0.15);
-
-    color: white;
+    border: 1px solid rgba(255,255,255,.14);
 }
 
-.server-ip {
+.server {
     display: inline-flex;
     align-items: center;
-    gap: 15px;
+    gap: 18px;
 
     margin-top: 30px;
 
-    padding: 12px 12px 12px 17px;
+    padding: 12px 12px 12px 18px;
+
+    background: rgba(0,0,0,.55);
+
+    border: 1px solid rgba(255,255,255,.1);
 
     border-radius: 10px;
 
-    background: rgba(0,0,0,0.55);
-
-    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(15px);
 }
 
-.server-ip small {
+.server small {
     display: block;
 
-    color: #858e9d;
+    color: #818a99;
 
-    font-size: 10px;
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
 
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-.server-ip strong {
+.server strong {
     font-family: monospace;
 
     font-size: 15px;
@@ -260,26 +254,24 @@ a {
 .copy {
     border: 0;
 
-    padding: 9px 13px;
+    padding: 10px 13px;
 
     border-radius: 7px;
 
-    background: rgba(245,196,81,0.15);
+    background: rgba(244,196,81,.15);
 
-    color: #f5c451;
-
-    font-size: 11px;
-    font-weight: 900;
+    color: #f4c451;
 
     cursor: pointer;
+
+    font-size: 10px;
+    font-weight: 900;
 }
 
-/* =========================
-   STATS
-========================= */
+/* STATS */
 
 .stats {
-    margin-top: -65px;
+    margin-top: -70px;
 
     position: relative;
     z-index: 10;
@@ -287,11 +279,11 @@ a {
 
 .stats-box {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
-    background: rgba(15,19,27,0.92);
+    background: rgba(15,19,27,.94);
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,.08);
 
     border-radius: 18px;
 
@@ -301,23 +293,23 @@ a {
 }
 
 .stat {
-    text-align: center;
-
     padding: 30px;
 
-    border-right: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+
+    border-right: 1px solid rgba(255,255,255,.08);
 }
 
 .stat:last-child {
-    border-right: 0;
+    border: 0;
 }
 
 .stat strong {
     display: block;
 
-    color: #f5c451;
+    color: #f4c451;
 
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 900;
 }
 
@@ -326,66 +318,60 @@ a {
 
     margin-top: 6px;
 
-    color: #8f98a8;
+    color: #858e9e;
 
     font-size: 12px;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+/* GENERAL SECTIONS */
 
 section {
     padding: 120px 0;
 }
 
-.section-title {
+.heading {
     max-width: 700px;
 
-    text-align: center;
+    margin: auto auto 60px;
 
-    margin: 0 auto 65px;
+    text-align: center;
 }
 
-.section-title .small {
-    color: #f5c451;
+.heading-label {
+    color: #f4c451;
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 900;
 
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
-.section-title h2 {
-    margin-top: 13px;
+.heading h2 {
+    margin-top: 12px;
 
-    font-size: clamp(38px, 5vw, 60px);
+    font-size: clamp(38px,5vw,60px);
 
     line-height: 1;
 
     letter-spacing: -3px;
-
-    font-weight: 900;
 }
 
-.section-title p {
-    margin-top: 20px;
+.heading p {
+    margin-top: 18px;
 
-    color: #8f98a8;
+    color: #858e9e;
 
     line-height: 1.7;
 }
 
-/* =========================
-   FEATURES
-========================= */
+/* FEATURES */
 
 .features {
     background:
         radial-gradient(
-            circle at 50% 0%,
-            rgba(245,196,81,0.06),
+            circle at top,
+            rgba(244,196,81,.06),
             transparent 45%
         );
 }
@@ -393,36 +379,36 @@ section {
 .feature-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 18px;
 }
 
 .feature {
+    min-height: 280px;
+
     padding: 32px;
 
-    min-height: 280px;
+    border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.055),
-            rgba(255,255,255,0.015)
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
         );
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,.08);
 
-    border-radius: 18px;
-
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .feature:hover {
     transform: translateY(-7px);
 
-    border-color: rgba(245,196,81,0.3);
+    border-color: rgba(244,196,81,.3);
 
-    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+    box-shadow: 0 25px 70px rgba(0,0,0,.35);
 }
 
 .icon {
@@ -434,15 +420,15 @@ section {
 
     border-radius: 14px;
 
-    background: rgba(245,196,81,0.1);
+    background: rgba(244,196,81,.1);
 
-    border: 1px solid rgba(245,196,81,0.15);
+    border: 1px solid rgba(244,196,81,.15);
 
     font-size: 25px;
 }
 
 .feature h3 {
-    margin-top: 27px;
+    margin-top: 25px;
 
     font-size: 20px;
 }
@@ -450,16 +436,14 @@ section {
 .feature p {
     margin-top: 12px;
 
-    color: #8f98a8;
+    color: #858e9e;
 
     font-size: 14px;
 
     line-height: 1.7;
 }
 
-/* =========================
-   SHOWCASE
-========================= */
+/* SHOWCASE */
 
 .showcase {
     padding-top: 30px;
@@ -471,69 +455,69 @@ section {
     display: flex;
     align-items: flex-end;
 
-    border-radius: 24px;
-
     overflow: hidden;
+
+    border-radius: 24px;
 
     background:
         linear-gradient(
             0deg,
-            rgba(3,5,8,0.98),
-            rgba(3,5,8,0.05)
+            rgba(3,5,8,.98),
+            rgba(3,5,8,.05)
         ),
-        url("https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=2200&q=90");
+        url("https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=2400&q=90");
 
     background-size: cover;
     background-position: center;
 }
 
 .showcase-content {
-    padding: 55px;
-
     max-width: 700px;
+
+    padding: 55px;
 }
 
 .showcase-content h2 {
-    font-size: clamp(40px, 5vw, 65px);
+    margin-top: 10px;
 
-    line-height: 1;
+    font-size: clamp(40px,5vw,65px);
 
-    letter-spacing: -3px;
+    line-height: .95;
+
+    letter-spacing: -4px;
 }
 
 .showcase-content p {
     margin-top: 20px;
 
-    color: #c2c8d1;
+    color: #c2c8d2;
 
     line-height: 1.7;
 }
 
-/* =========================
-   HOW TO PLAY
-========================= */
+/* STEPS */
 
 .steps {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 20px;
 }
 
 .step {
-    text-align: center;
-
     padding: 35px 25px;
 
+    text-align: center;
+
+    background: rgba(255,255,255,.025);
+
+    border: 1px solid rgba(255,255,255,.08);
+
     border-radius: 18px;
-
-    background: rgba(255,255,255,0.025);
-
-    border: 1px solid rgba(255,255,255,0.08);
 }
 
-.step-number {
+.number {
     width: 50px;
     height: 50px;
 
@@ -544,7 +528,7 @@ section {
 
     border-radius: 50%;
 
-    background: #f5c451;
+    background: #f4c451;
 
     color: #111;
 
@@ -558,16 +542,14 @@ section {
 .step p {
     margin-top: 12px;
 
-    color: #8f98a8;
+    color: #858e9e;
 
     font-size: 14px;
 
     line-height: 1.7;
 }
 
-/* =========================
-   JOIN
-========================= */
+/* JOIN */
 
 .join {
     text-align: center;
@@ -575,7 +557,7 @@ section {
     background:
         radial-gradient(
             circle at center,
-            rgba(245,196,81,0.1),
+            rgba(244,196,81,.1),
             transparent 50%
         );
 }
@@ -585,15 +567,15 @@ section {
 
     border-radius: 24px;
 
-    background: rgba(255,255,255,0.025);
+    background: rgba(255,255,255,.025);
 
-    border: 1px solid rgba(245,196,81,0.15);
+    border: 1px solid rgba(244,196,81,.15);
 }
 
 .join-box h2 {
-    margin-top: 12px;
+    margin-top: 10px;
 
-    font-size: clamp(42px, 6vw, 70px);
+    font-size: clamp(42px,6vw,70px);
 
     letter-spacing: -4px;
 }
@@ -603,14 +585,12 @@ section {
 
     margin: 20px auto 0;
 
-    color: #8f98a8;
+    color: #858e9e;
 
     line-height: 1.7;
 }
 
-/* =========================
-   FAQ
-========================= */
+/* FAQ */
 
 .faq {
     max-width: 850px;
@@ -621,9 +601,9 @@ section {
 details {
     margin-bottom: 10px;
 
-    background: rgba(255,255,255,0.025);
+    background: rgba(255,255,255,.025);
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,.08);
 
     border-radius: 12px;
 }
@@ -647,7 +627,7 @@ summary::after {
 
     float: right;
 
-    color: #f5c451;
+    color: #f4c451;
 
     font-size: 20px;
 }
@@ -659,39 +639,37 @@ details[open] summary::after {
 details p {
     padding: 0 21px 21px;
 
-    color: #8f98a8;
+    color: #858e9e;
 
     font-size: 14px;
 
     line-height: 1.7;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     padding: 55px 0 30px;
 
     background: #05070a;
 
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid rgba(255,255,255,.08);
 }
 
-.footer-top {
+.footer {
     display: flex;
 
-    justify-content: space-between;
     align-items: center;
+
+    justify-content: space-between;
 }
 
 .footer-logo {
-    font-size: 20px;
     font-weight: 900;
 }
 
 .footer-logo span {
-    color: #f5c451;
+    color: #f4c451;
 }
 
 .footer-links {
@@ -699,7 +677,7 @@ footer {
 
     gap: 25px;
 
-    color: #7d8593;
+    color: #737c8a;
 
     font-size: 13px;
 }
@@ -707,29 +685,23 @@ footer {
 .copyright {
     margin-top: 35px;
 
-    text-align: center;
-
-    color: #4d5561;
+    color: #454d58;
 
     font-size: 11px;
+
+    text-align: center;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
-@media(max-width: 850px) {
+@media(max-width:850px) {
 
-    .nav-links {
+    .links {
         display: none;
     }
 
-    .hero {
-        min-height: 750px;
-    }
-
     .feature-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2,1fr);
     }
 
     .steps {
@@ -737,21 +709,18 @@ footer {
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width:600px) {
 
     .hero {
-        min-height: 720px;
-
-        background-position: 65% center;
+        min-height: 760px;
     }
 
-    .hero h1 {
+    h1 {
         font-size: 56px;
-
-        letter-spacing: -3px;
+        letter-spacing: -4px;
     }
 
-    .hero p {
+    .hero-text {
         font-size: 16px;
     }
 
@@ -760,18 +729,13 @@ footer {
     }
 
     .button {
+        width: 100%;
         text-align: center;
-        width: 100%;
     }
 
-    .server-ip {
+    .server {
         width: 100%;
-
         justify-content: space-between;
-    }
-
-    .stats {
-        margin-top: -35px;
     }
 
     .stats-box {
@@ -780,8 +744,7 @@ footer {
 
     .stat {
         border-right: 0;
-
-        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .stat:last-child {
@@ -800,64 +763,46 @@ footer {
         padding: 30px;
     }
 
-    .footer-top {
+    .footer {
         flex-direction: column;
-
         gap: 25px;
     }
 
     .footer-links {
         flex-wrap: wrap;
-
         justify-content: center;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- NAVIGATION -->
-
-<nav class="nav">
-
+<nav>
     <div class="nav-inner">
 
-        <a href="#" class="logo">
+        <a href="./" class="logo">
             MC <span>KINGDOM</span>
         </a>
 
-        <div class="nav-links">
-
+        <div class="links">
             <a href="#features">Features</a>
-
             <a href="#play">How To Play</a>
-
             <a href="#faq">FAQ</a>
-
-            <a href="https://store.mc-kingdom.net">
-                Store
-            </a>
-
+            <a href="https://store.mc-kingdom.net">Store</a>
         </div>
 
         <a
             href="https://discord.gg/"
+            class="discord"
             target="_blank"
-            class="nav-discord"
         >
             DISCORD
         </a>
 
     </div>
-
 </nav>
 
-
-<!-- HERO -->
 
 <header class="hero">
 
@@ -874,7 +819,7 @@ footer {
                 <span>KINGDOM.</span>
             </h1>
 
-            <p>
+            <p class="hero-text">
                 Catch Pokémon. Explore a massive world.
                 Build your kingdom. Battle other trainers.
                 Your adventure starts here.
@@ -884,7 +829,7 @@ footer {
 
                 <a
                     href="#play"
-                    class="button button-primary"
+                    class="button primary"
                 >
                     START YOUR ADVENTURE →
                 </a>
@@ -892,31 +837,24 @@ footer {
                 <a
                     href="https://discord.gg/"
                     target="_blank"
-                    class="button button-secondary"
+                    class="button secondary"
                 >
                     JOIN DISCORD
                 </a>
 
             </div>
 
-            <div class="server-ip">
+            <div class="server">
 
                 <div>
-
-                    <small>
-                        Server Address
-                    </small>
-
-                    <strong>
-                        play.mc-kingdom.net
-                    </strong>
-
+                    <small>Server Address</small>
+                    <strong>play.mc-kingdom.net</strong>
                 </div>
 
                 <button
                     class="copy"
-                    onclick="copyIP()"
                     id="copyButton"
+                    onclick="copyIP()"
                 >
                     COPY IP
                 </button>
@@ -930,8 +868,6 @@ footer {
 </header>
 
 
-<!-- STATS -->
-
 <div class="stats">
 
     <div class="container">
@@ -939,39 +875,18 @@ footer {
         <div class="stats-box">
 
             <div class="stat">
-
-                <strong id="players">
-                    —
-                </strong>
-
-                <span>
-                    Trainers Online
-                </span>
-
+                <strong id="players">—</strong>
+                <span>Trainers Online</span>
             </div>
 
             <div class="stat">
-
-                <strong>
-                    24/7
-                </strong>
-
-                <span>
-                    Server Availability
-                </span>
-
+                <strong>24/7</strong>
+                <span>Server Availability</span>
             </div>
 
             <div class="stat">
-
-                <strong>
-                    1.21.1
-                </strong>
-
-                <span>
-                    Minecraft Version
-                </span>
-
+                <strong>1.21.1</strong>
+                <span>Minecraft Version</span>
             </div>
 
         </div>
@@ -981,8 +896,6 @@ footer {
 </div>
 
 
-<!-- FEATURES -->
-
 <section
     class="features"
     id="features"
@@ -990,9 +903,9 @@ footer {
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="heading">
 
-            <div class="small">
+            <div class="heading-label">
                 What We Offer
             </div>
 
@@ -1012,16 +925,11 @@ footer {
 
         <div class="feature-grid">
 
-
             <div class="feature">
 
-                <div class="icon">
-                    👑
-                </div>
+                <div class="icon">👑</div>
 
-                <h3>
-                    Build Your Kingdom
-                </h3>
+                <h3>Build Your Kingdom</h3>
 
                 <p>
                     Create your base, build with friends,
@@ -1034,13 +942,9 @@ footer {
 
             <div class="feature">
 
-                <div class="icon">
-                    🐉
-                </div>
+                <div class="icon">🐉</div>
 
-                <h3>
-                    Legendary Pokémon
-                </h3>
+                <h3>Legendary Pokémon</h3>
 
                 <p>
                     Explore the world and hunt for rare,
@@ -1052,13 +956,9 @@ footer {
 
             <div class="feature">
 
-                <div class="icon">
-                    ⚔️
-                </div>
+                <div class="icon">⚔️</div>
 
-                <h3>
-                    Battle & Compete
-                </h3>
+                <h3>Battle & Compete</h3>
 
                 <p>
                     Train your team, battle other players
@@ -1071,13 +971,9 @@ footer {
 
             <div class="feature">
 
-                <div class="icon">
-                    💰
-                </div>
+                <div class="icon">💰</div>
 
-                <h3>
-                    Economy & Trading
-                </h3>
+                <h3>Economy & Trading</h3>
 
                 <p>
                     Earn money, trade Pokémon and items,
@@ -1090,13 +986,9 @@ footer {
 
             <div class="feature">
 
-                <div class="icon">
-                    🌎
-                </div>
+                <div class="icon">🌎</div>
 
-                <h3>
-                    Explore
-                </h3>
+                <h3>Explore</h3>
 
                 <p>
                     Discover a huge Minecraft world packed
@@ -1109,22 +1001,16 @@ footer {
 
             <div class="feature">
 
-                <div class="icon">
-                    🎉
-                </div>
+                <div class="icon">🎉</div>
 
-                <h3>
-                    Events & Community
-                </h3>
+                <h3>Events & Community</h3>
 
                 <p>
                     Take part in tournaments, events,
-                    giveaways and community activities
-                    throughout the year.
+                    giveaways and community activities.
                 </p>
 
             </div>
-
 
         </div>
 
@@ -1132,8 +1018,6 @@ footer {
 
 </section>
 
-
-<!-- SHOWCASE -->
 
 <section class="showcase">
 
@@ -1143,13 +1027,8 @@ footer {
 
             <div class="showcase-content">
 
-                <div class="section-title"
-                     style="text-align:left;margin:0;">
-
-                    <div class="small">
-                        Your Adventure
-                    </div>
-
+                <div class="heading-label">
+                    YOUR ADVENTURE
                 </div>
 
                 <h2>
@@ -1168,7 +1047,7 @@ footer {
 
                     <a
                         href="#play"
-                        class="button button-primary"
+                        class="button primary"
                     >
                         BEGIN YOUR JOURNEY
                     </a>
@@ -1184,21 +1063,17 @@ footer {
 </section>
 
 
-<!-- HOW TO PLAY -->
-
 <section id="play">
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="heading">
 
-            <div class="small">
+            <div class="heading-label">
                 Getting Started
             </div>
 
-            <h2>
-                READY TO PLAY?
-            </h2>
+            <h2>READY TO PLAY?</h2>
 
             <p>
                 Getting started with MC Kingdom is simple.
@@ -1209,16 +1084,11 @@ footer {
 
         <div class="steps">
 
-
             <div class="step">
 
-                <div class="step-number">
-                    01
-                </div>
+                <div class="number">01</div>
 
-                <h3>
-                    Install Cobblemon
-                </h3>
+                <h3>Install Cobblemon</h3>
 
                 <p>
                     Install Minecraft 1.21.1 and the
@@ -1230,19 +1100,13 @@ footer {
 
             <div class="step">
 
-                <div class="step-number">
-                    02
-                </div>
+                <div class="number">02</div>
 
-                <h3>
-                    Connect
-                </h3>
+                <h3>Connect</h3>
 
                 <p>
                     Add
-                    <strong>
-                        play.mc-kingdom.net
-                    </strong>
+                    <strong>play.mc-kingdom.net</strong>
                     to your Minecraft server list.
                 </p>
 
@@ -1251,13 +1115,9 @@ footer {
 
             <div class="step">
 
-                <div class="step-number">
-                    03
-                </div>
+                <div class="number">03</div>
 
-                <h3>
-                    Start Playing
-                </h3>
+                <h3>Start Playing</h3>
 
                 <p>
                     Choose your starter Pokémon,
@@ -1267,7 +1127,6 @@ footer {
 
             </div>
 
-
         </div>
 
     </div>
@@ -1275,24 +1134,19 @@ footer {
 </section>
 
 
-<!-- JOIN -->
-
 <section class="join">
 
     <div class="container">
 
         <div class="join-box">
 
-            <div class="section-title"
-                 style="margin-bottom:0;">
+            <div class="heading" style="margin-bottom:0">
 
-                <div class="small">
-                    The Kingdom Awaits
+                <div class="heading-label">
+                    THE KINGDOM AWAITS
                 </div>
 
-                <h2>
-                    JOIN THE KINGDOM.
-                </h2>
+                <h2>JOIN THE KINGDOM.</h2>
 
                 <p>
                     Meet other trainers, find people to
@@ -1302,23 +1156,22 @@ footer {
 
             </div>
 
-
             <div
                 class="buttons"
-                style="justify-content:center;"
+                style="justify-content:center"
             >
 
                 <a
                     href="https://discord.gg/"
                     target="_blank"
-                    class="button button-primary"
+                    class="button primary"
                 >
                     JOIN DISCORD
                 </a>
 
                 <a
                     href="https://store.mc-kingdom.net"
-                    class="button button-secondary"
+                    class="button secondary"
                 >
                     VISIT STORE
                 </a>
@@ -1332,46 +1185,37 @@ footer {
 </section>
 
 
-<!-- FAQ -->
-
 <section id="faq">
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="heading">
 
-            <div class="small">
+            <div class="heading-label">
                 Need To Know
             </div>
 
-            <h2>
-                FREQUENTLY ASKED
-            </h2>
+            <h2>FAQ</h2>
 
         </div>
 
 
         <div class="faq">
 
-
             <details>
-
                 <summary>
                     How do I join MC Kingdom?
                 </summary>
 
                 <p>
                     Install Minecraft 1.21.1 and the
-                    required Cobblemon modpack. Then add
-                    play.mc-kingdom.net to your multiplayer
-                    server list.
+                    required Cobblemon modpack, then
+                    connect to play.mc-kingdom.net.
                 </p>
-
             </details>
 
 
             <details>
-
                 <summary>
                     What Minecraft version do I need?
                 </summary>
@@ -1380,41 +1224,34 @@ footer {
                     MC Kingdom currently runs Minecraft
                     1.21.1 with Cobblemon.
                 </p>
-
             </details>
 
 
             <details>
-
                 <summary>
                     Is MC Kingdom free to play?
                 </summary>
 
                 <p>
-                    Yes. You can join and play MC Kingdom
-                    without purchasing anything.
+                    Yes. You can join and play without
+                    purchasing anything.
                 </p>
-
             </details>
 
 
             <details>
-
                 <summary>
-                    Can I play with my friends?
+                    Can I play with friends?
                 </summary>
 
                 <p>
-                    Absolutely. Build together, explore
-                    together, trade Pokémon and create
-                    your own kingdom.
+                    Absolutely. Build together, explore,
+                    trade Pokémon and create your kingdom.
                 </p>
-
             </details>
 
 
             <details>
-
                 <summary>
                     Where can I get help?
                 </summary>
@@ -1423,23 +1260,7 @@ footer {
                     Join the MC Kingdom Discord community
                     for support and announcements.
                 </p>
-
             </details>
-
-
-            <details>
-
-                <summary>
-                    Where is the store?
-                </summary>
-
-                <p>
-                    Visit our official store at
-                    store.mc-kingdom.net.
-                </p>
-
-            </details>
-
 
         </div>
 
@@ -1448,13 +1269,11 @@ footer {
 </section>
 
 
-<!-- FOOTER -->
-
 <footer>
 
     <div class="container">
 
-        <div class="footer-top">
+        <div class="footer">
 
             <div class="footer-logo">
                 MC <span>KINGDOM</span>
@@ -1462,17 +1281,11 @@ footer {
 
             <div class="footer-links">
 
-                <a href="#features">
-                    Features
-                </a>
+                <a href="#features">Features</a>
 
-                <a href="#play">
-                    How To Play
-                </a>
+                <a href="#play">How To Play</a>
 
-                <a href="#faq">
-                    FAQ
-                </a>
+                <a href="#faq">FAQ</a>
 
                 <a href="https://store.mc-kingdom.net">
                     Store
@@ -1489,17 +1302,12 @@ footer {
 
         </div>
 
-
         <div class="copyright">
-
             © 2026 MC Kingdom. All rights reserved.
-
             <br><br>
-
-            MC Kingdom is not affiliated with
-            Mojang, Microsoft, Nintendo,
-            Game Freak or The Pokémon Company.
-
+            MC Kingdom is not affiliated with Mojang,
+            Microsoft, Nintendo, Game Freak or
+            The Pokémon Company.
         </div>
 
     </div>
@@ -1508,8 +1316,6 @@ footer {
 
 
 <script>
-
-/* COPY SERVER IP */
 
 function copyIP() {
 
@@ -1520,20 +1326,17 @@ function copyIP() {
     const button =
         document.getElementById("copyButton");
 
-    button.innerText = "COPIED!";
+    button.textContent = "COPIED!";
 
     setTimeout(function() {
 
-        button.innerText = "COPY IP";
+        button.textContent = "COPY IP";
 
     }, 2000);
-
 }
 
 
-/* LIVE SERVER PLAYER COUNT */
-
-async function serverStatus() {
+async function getPlayers() {
 
     try {
 
@@ -1543,31 +1346,31 @@ async function serverStatus() {
 
         const data = await response.json();
 
-        const players =
+        const element =
             document.getElementById("players");
 
         if (data.online) {
 
-            players.innerText =
+            element.textContent =
                 data.players.online;
 
         } else {
 
-            players.innerText =
+            element.textContent =
                 "OFFLINE";
 
         }
 
-    } catch (error) {
+    } catch {
 
-        document.getElementById("players").innerText =
+        document.getElementById("players").textContent =
             "ONLINE";
 
     }
 
 }
 
-serverStatus();
+getPlayers();
 
 </script>
 
